@@ -1,0 +1,4 @@
+#!/bin/sh
+export prefix=@prefix@
+export exec_prefix=@exec_prefix@
+env LD_PRELOAD=@libdir@/libift_preload.so:$LD_PRELOAD $*

@@ -1,0 +1,15 @@
+AM_CPPFLAGS=\
+-I$(builddir)/../ \
+-I$(top_srcdir)/src
+
+noinst_LTLIBRARIES=\
+lib.la
+
+lib_la_SOURCES=\
+malloc.cpp \
+calloc.cpp \
+realloc.cpp \
+atexit.cpp \
+getenv.cpp \
+system.cpp \
+posix_memalign.cpp
