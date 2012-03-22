@@ -35,9 +35,9 @@
 #define malloc_failable__ incremental_failable__(malloc, ENOMEM)
 #define calloc_failable__ incremental_failable__(calloc, ENOMEM)
 #define realloc_failable__ incremental_failable__(realloc, ENOMEM)
-#define atexit_failable__ incremental_failable__(atexit, 0)
 #define getenv_failable__ incremental_failable__(getenv, 0)
 #define system_failable__ incremental_failable__(system, 0)
-#define posix_memalign_failable__ incremental_failable__(posix_memalign, ENOMEM)
+#define posix_memalign_failable_by__(E)         \
+    incremental_failable__(posix_memalign, E)
 
 #endif

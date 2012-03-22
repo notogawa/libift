@@ -27,7 +27,60 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include <gtest/gtest.h>
 #include <cstdlib>
-#include "basic_impl.hpp"
-IFT_BASIC_IMPL(int, atexit, (void(*)(void)), -1,
-               (void (*function)(void)), (function), throw ())
+#include "ift/stdlib.hpp"
+
+TEST(stdlib,malloc)
+{
+    malloc_failable__
+    {
+        ASSERT_EQ(NULL, std::malloc(10));
+        ASSERT_EQ(ENOMEM, errno);
+    }
+}
+
+TEST(stdlib,calloc)
+{
+    calloc_failable__
+    {
+        ASSERT_EQ(NULL, std::calloc(10, 10));
+        ASSERT_EQ(ENOMEM, errno);
+    }
+}
+
+TEST(stdlib,realloc)
+{
+    void* p = malloc(10);
+    realloc_failable__
+    {
+        ASSERT_EQ(NULL, std::realloc(p, 20));
+        ASSERT_EQ(ENOMEM, errno);
+    }
+    free(p);
+}
+
+TEST(stdlib,getenv)
+{
+    getenv_failable__
+    {
+        ASSERT_EQ(NULL, std::getenv("LD_PRELOAD"));
+    }
+}
+
+TEST(stdlib,system)
+{
+    system_failable__
+    {
+        ASSERT_EQ(-1, std::system("echo OK"));
+    }
+}
+
+TEST(stdlib,posix_memalign)
+{
+    posix_memalign_failable_by__(ENOMEM)
+    {
+        void* p = NULL;
+        ASSERT_EQ(ENOMEM, posix_memalign(&p, sizeof(void*)*2, 10));
+    }
+}

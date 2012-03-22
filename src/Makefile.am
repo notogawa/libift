@@ -59,8 +59,9 @@ $(AM_CPPFLAGS) \
 
 test_SOURCES=\
 $(top_srcdir)/ext/googletest/src/gtest-all.cc \
-test_libift.cpp \
-test_stdio.cpp
+test_stdio.cpp \
+test_stdlib.cpp \
+test_libift.cpp
 
 test_CXXFLAGS=\
 $(AM_CXXFLAGS) \
