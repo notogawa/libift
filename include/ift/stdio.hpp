@@ -59,10 +59,10 @@
 #define ftell_failable_by__(E) incremental_failable__(ftell, E)
 #define fgetpos_failable_by__(E) incremental_failable__(fgetpos, E)
 #define fsetpos_failable_by__(E) incremental_failable__(fsetpos, E)
-#define remove_failable__ incremental_failable__(remove, 0)
+#define remove_failable_by__(E) incremental_failable__(remove, E)
 #define rename_failable_by__(E) incremental_failable__(rename, E)
 #define setvbuf_failable_by__(E) incremental_failable__(setvbuf, E)
 #define tmpfile_failable_by__(E) incremental_failable__(tmpfile, E)
-#define tmpnam_failable__(E) incremental_failable__(tmpnam, 0)
+#define tmpnam_failable__ incremental_failable__(tmpnam, 0)
 
 #endif

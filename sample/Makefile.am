@@ -25,11 +25,10 @@ $(AM_CXXFLAGS) \
 -fno-builtin -O0
 
 sample_test_LDFLAGS=\
--L$(top_srcdir)/src/ -lift \
+-L$(top_builddir)/src/ -lift \
 @PTHREAD_LIBS@
 
 TESTS_ENVIRONMENT=\
-LD_DEBUG=all LD_DEBUG_OUTPUT=/tmp/ld-debug \
 env LD_PRELOAD=$(top_builddir)/src/.libs/libift_preload.so:$$LD_PRELOAD
 
 TESTS=$(check_PROGRAMS)

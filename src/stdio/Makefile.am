@@ -1,6 +1,5 @@
 AM_CPPFLAGS=\
--I$(builddir)/../ \
--I$(top_srcdir)/src
+-I$(srcdir)/../
 
 noinst_LTLIBRARIES=\
 lib.la
