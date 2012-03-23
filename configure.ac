@@ -88,6 +88,7 @@ AC_CONFIG_FILES([Makefile
                  src/time/Makefile
                  src/unistd/Makefile
                  test/Makefile
+                 test/fcntl/Makefile
                  test/signal/Makefile
                  test/stdarg/Makefile
                  test/stdio/Makefile

@@ -1,4 +1,5 @@
 SUBDIRS=\
+fcntl \
 signal \
 stdarg \
 stdio \
@@ -13,6 +14,7 @@ lib.a
 lib_a_SOURCES=
 
 lib_a_LIBADD=\
+fcntl/lib.la \
 signal/lib.la \
 stdarg/lib.la \
 stdio/lib.la \
