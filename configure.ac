@@ -88,6 +88,7 @@ AC_CONFIG_FILES([Makefile
                  src/time/Makefile
                  src/unistd/Makefile
                  test/Makefile
+                 test/signal/Makefile
                  test/stdio/Makefile
                  test/stdlib/Makefile
                  libift.pc
