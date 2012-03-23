@@ -27,6 +27,16 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include <gtest/gtest.h>
 #include <cstring>
-#include "basic_impl.hpp"
-IFT_BASIC_IMPL(char*, strerror, (int), NULL, (int errnum), (errnum), throw ())
+#include <string>
+#include "ift/string.hpp"
+
+TEST(string,strerror)
+{
+    strerror_failable__
+    {
+        ASSERT_EQ(std::string("Unknown error 12"),
+                  std::string(std::strerror(12)));
+    }
+}

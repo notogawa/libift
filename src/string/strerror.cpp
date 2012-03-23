@@ -27,11 +27,20 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#ifndef IFT_STRING_HPP
-#define IFT_STRING_HPP
+#include <cstring>
+#include <cstdio>
+#include "basic_impl.hpp"
 
-#include "ift/incremental_failable.hpp"
+namespace {
 
-#define strerror_failable__ incremental_failable__(strerror, 0)
+char* mkval(int errnum)
+{
+    static __thread char buf[1024];
+    std::sprintf(buf, "Unknown error %d", errnum);
+    return buf;
+}
 
-#endif
+} // anonymous namespace
+
+IFT_BASIC_IMPL(char*, strerror, (int), mkval(errnum),
+               (int errnum), (errnum), throw ())

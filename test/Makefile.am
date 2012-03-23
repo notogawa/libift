@@ -1,7 +1,8 @@
 SUBDIRS=\
 signal \
 stdio \
-stdlib
+stdlib \
+string
 
 check_PROGRAMS=\
 test
@@ -24,6 +25,7 @@ test_LDFLAGS=\
 -Wl,--whole-archive,signal/lib.a,--no-whole-archive \
 -Wl,--whole-archive,stdio/lib.a,--no-whole-archive \
 -Wl,--whole-archive,stdlib/lib.a,--no-whole-archive \
+-Wl,--whole-archive,string/lib.a,--no-whole-archive \
 -L$(top_builddir)/src -lift \
 @PTHREAD_LIBS@
 

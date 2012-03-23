@@ -91,6 +91,7 @@ AC_CONFIG_FILES([Makefile
                  test/signal/Makefile
                  test/stdio/Makefile
                  test/stdlib/Makefile
+                 test/string/Makefile
                  libift.pc
                  script/runift])
 AC_CONFIG_SUBDIRS([ext/googletest])
