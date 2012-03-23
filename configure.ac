@@ -89,6 +89,7 @@ AC_CONFIG_FILES([Makefile
                  src/unistd/Makefile
                  test/Makefile
                  test/signal/Makefile
+                 test/stdarg/Makefile
                  test/stdio/Makefile
                  test/stdlib/Makefile
                  test/string/Makefile

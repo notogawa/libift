@@ -1,5 +1,6 @@
 SUBDIRS=\
 signal \
+stdarg \
 stdio \
 stdlib \
 string \
@@ -24,6 +25,7 @@ $(AM_CXXFLAGS) \
 
 test_LDFLAGS=\
 -Wl,--whole-archive,signal/lib.a,--no-whole-archive \
+-Wl,--whole-archive,stdarg/lib.a,--no-whole-archive \
 -Wl,--whole-archive,stdio/lib.a,--no-whole-archive \
 -Wl,--whole-archive,stdlib/lib.a,--no-whole-archive \
 -Wl,--whole-archive,string/lib.a,--no-whole-archive \
