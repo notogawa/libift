@@ -2,6 +2,7 @@
 Makefile
 Makefile.in
 stamp-h*
+/compile
 /missing
 /libtool
 /depcomp
@@ -17,6 +18,7 @@ stamp-h*
 
 *.o
 *.lo
+*.a
 *.la
 *.gcno
 *.gcda
@@ -25,6 +27,6 @@ stamp-h*
 .deps
 .libs
 
-/libmempool.pc
+/libift.pc
 
 cscope.*

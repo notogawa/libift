@@ -32,14 +32,21 @@ AC_PROG_LIBTOOL
 AX_PTHREAD
 
 # Checks for header files.
+AC_CHECK_HEADERS([fcntl.h stdlib.h string.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL
+AC_TYPE_UID_T
+AC_TYPE_MODE_T
+AC_TYPE_OFF_T
+AC_TYPE_PID_T
 AC_TYPE_SIZE_T
+AC_TYPE_SSIZE_T
 
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
 AC_FUNC_MALLOC
+AC_FUNC_REALLOC
 
 # Treat warnings as errors
 AM_CFLAGS="-Wall -Wextra -Werror -Wunreachable-code -ansi -pedantic"
@@ -70,10 +77,8 @@ AC_SUBST(AM_CXXFLAGS)
 
 AC_CONFIG_FILES([Makefile
                  include/Makefile
-                 libift.pc
                  sample/Makefile
                  script/Makefile
-                 script/runift
                  src/Makefile
                  src/fcntl/Makefile
                  src/signal/Makefile
@@ -81,6 +86,11 @@ AC_CONFIG_FILES([Makefile
                  src/stdlib/Makefile
                  src/string/Makefile
                  src/time/Makefile
-                 src/unistd/Makefile])
+                 src/unistd/Makefile
+                 test/Makefile
+                 test/stdio/Makefile
+                 test/stdlib/Makefile
+                 libift.pc
+                 script/runift])
 AC_CONFIG_SUBDIRS([ext/googletest])
 AC_OUTPUT

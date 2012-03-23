@@ -4,7 +4,8 @@ SUBDIRS=\
 script \
 include \
 src \
-sample
+sample \
+test
 
 EXTRA_DIST=\
 LICENSE \

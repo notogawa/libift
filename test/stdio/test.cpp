@@ -208,7 +208,8 @@ TEST(stdio,fread)
     FILE* fp = tmpfile();
     fread_failable__
     {
-        ASSERT_EQ(0U, fread(NULL, 10, 10, fp));
+        char buf[1024];
+        ASSERT_EQ(0U, fread(buf, 10, 10, fp));
     }
     fclose(fp);
 }
@@ -218,7 +219,8 @@ TEST(stdio,fwrite)
     FILE* fp = tmpfile();
     fwrite_failable__
     {
-        ASSERT_EQ(0U, fwrite(NULL, 10, 10, fp));
+        char buf[1024];
+        ASSERT_EQ(0U, fwrite(buf, 10, 10, fp));
     }
     fclose(fp);
 }
