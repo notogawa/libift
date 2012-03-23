@@ -6,6 +6,20 @@ stdlib \
 string \
 time
 
+# not a standard libtool library name
+check_LTLIBRARIES=\
+lib.a
+
+lib_a_SOURCES=
+
+lib_a_LIBADD=\
+signal/lib.la \
+stdarg/lib.la \
+stdio/lib.la \
+stdlib/lib.la \
+string/lib.la \
+time/lib.la
+
 check_PROGRAMS=\
 test
 
@@ -24,12 +38,7 @@ $(AM_CXXFLAGS) \
 -fno-builtin -O0
 
 test_LDFLAGS=\
--Wl,--whole-archive,signal/lib.a,--no-whole-archive \
--Wl,--whole-archive,stdarg/lib.a,--no-whole-archive \
--Wl,--whole-archive,stdio/lib.a,--no-whole-archive \
--Wl,--whole-archive,stdlib/lib.a,--no-whole-archive \
--Wl,--whole-archive,string/lib.a,--no-whole-archive \
--Wl,--whole-archive,time/lib.a,--no-whole-archive \
+-Wl,--whole-archive,lib.a,--no-whole-archive \
 -L$(top_builddir)/src -lift \
 @PTHREAD_LIBS@
 
