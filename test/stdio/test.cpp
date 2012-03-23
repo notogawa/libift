@@ -35,7 +35,7 @@ TEST(stdio,fopen)
 {
     fopen_failable_by__(ENOMEM)
     {
-        ASSERT_EQ(NULL, fopen("/dev/null", "w"));
+        ASSERT_EQ(NULL, std::fopen("/dev/null", "w"));
         ASSERT_EQ(ENOMEM, errno);
     }
 }
@@ -53,10 +53,10 @@ TEST(stdio,fdopen)
 
 TEST(stdio,freopen)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     freopen_failable_by__(ENOMEM)
     {
-        ASSERT_EQ(NULL, freopen("/dev/null", "w", fp));
+        ASSERT_EQ(NULL, std::freopen("/dev/null", "w", fp));
         ASSERT_EQ(ENOMEM, errno);
     }
     fclose(fp);
@@ -64,10 +64,10 @@ TEST(stdio,freopen)
 
 TEST(stdio,fclose)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fclose_failable_by__(EIO)
     {
-        ASSERT_EQ(-1, fclose(fp));
+        ASSERT_EQ(-1, std::fclose(fp));
         ASSERT_EQ(EIO, errno);
     }
     fclose(fp);
@@ -75,31 +75,31 @@ TEST(stdio,fclose)
 
 TEST(stdio,fgetc)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fgetc_failable__
     {
-        ASSERT_EQ(EOF, fgetc(fp));
+        ASSERT_EQ(EOF, std::fgetc(fp));
     }
     fclose(fp);
 }
 
 TEST(stdio,fgets)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fgets_failable__
     {
         char buf[1024];
-        ASSERT_EQ(NULL, fgets(buf, sizeof(buf)/sizeof(buf[0]), fp));
+        ASSERT_EQ(NULL, std::fgets(buf, sizeof(buf)/sizeof(buf[0]), fp));
     }
     fclose(fp);
 }
 
 TEST(stdio,getc)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     getc_failable__
     {
-        ASSERT_EQ(EOF, getc(fp));
+        ASSERT_EQ(EOF, std::getc(fp));
     }
     fclose(fp);
 }
@@ -108,7 +108,7 @@ TEST(stdio,getchar)
 {
     getchar_failable__
     {
-        ASSERT_EQ(EOF, getchar());
+        ASSERT_EQ(EOF, std::getchar());
     }
 }
 
@@ -117,16 +117,16 @@ TEST(stdio,gets)
     gets_failable__
     {
         char buf[1024];
-        ASSERT_EQ(NULL, gets(buf));
+        ASSERT_EQ(NULL, std::gets(buf));
     }
 }
 
 TEST(stdio,ungetc)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     ungetc_failable__
     {
-        ASSERT_EQ(EOF, ungetc(10, fp));
+        ASSERT_EQ(EOF, std::ungetc(10, fp));
     }
     fclose(fp);
 }
@@ -135,16 +135,16 @@ TEST(stdio,printf)
 {
     printf_failable__
     {
-        ASSERT_GT(0, printf("test\n"));
+        ASSERT_GT(0, std::printf("test\n"));
     }
 }
 
 TEST(stdio,fprintf)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fprintf_failable__
     {
-        ASSERT_GT(0, fprintf(fp, "test\n"));
+        ASSERT_GT(0, std::fprintf(fp, "test\n"));
     }
     fclose(fp);
 }
@@ -154,7 +154,7 @@ TEST(stdio,sprintf)
     sprintf_failable__
     {
         char buf[1024];
-        ASSERT_GT(0, sprintf(buf, "test\n"));
+        ASSERT_GT(0, std::sprintf(buf, "test\n"));
     }
 }
 
@@ -163,26 +163,26 @@ TEST(stdio,snprintf)
     snprintf_failable__
     {
         char buf[1024];
-        ASSERT_GT(0, snprintf(buf, 2, "test\n"));
+        ASSERT_GT(0, std::snprintf(buf, 2, "test\n"));
     }
 }
 
 TEST(stdio,fputc)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fputc_failable__
     {
-        ASSERT_EQ(EOF, fputc(10, fp));
+        ASSERT_EQ(EOF, std::fputc(10, fp));
     }
     fclose(fp);
 }
 
 TEST(stdio,fputs)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fputs_failable__
     {
-        ASSERT_EQ(EOF, fputs("test", fp));
+        ASSERT_EQ(EOF, std::fputs("test", fp));
     }
     fclose(fp);
 }
@@ -191,7 +191,7 @@ TEST(stdio,putchar)
 {
     putchar_failable__
     {
-        ASSERT_EQ(EOF, putchar(10));
+        ASSERT_EQ(EOF, std::putchar(10));
     }
 }
 
@@ -199,28 +199,28 @@ TEST(stdio,puts)
 {
     puts_failable__
     {
-        ASSERT_EQ(EOF, puts("test"));
+        ASSERT_EQ(EOF, std::puts("test"));
     }
 }
 
 TEST(stdio,fread)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fread_failable__
     {
         char buf[1024];
-        ASSERT_EQ(0U, fread(buf, 10, 10, fp));
+        ASSERT_EQ(0U, std::fread(buf, 10, 10, fp));
     }
     fclose(fp);
 }
 
 TEST(stdio,fwrite)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fwrite_failable__
     {
         char buf[1024];
-        ASSERT_EQ(0U, fwrite(buf, 10, 10, fp));
+        ASSERT_EQ(0U, std::fwrite(buf, 10, 10, fp));
     }
     fclose(fp);
 }
@@ -230,18 +230,18 @@ TEST(stdio,scanf)
     scanf_failable_by__(ERANGE)
     {
         int n = 0;
-        ASSERT_EQ(EOF, scanf("%d", &n));
+        ASSERT_EQ(EOF, std::scanf("%d", &n));
         ASSERT_EQ(ERANGE, errno);
     }
 }
 
 TEST(stdio,fscanf)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fscanf_failable_by__(EBADF)
     {
         int n = 0;
-        ASSERT_EQ(EOF, fscanf(fp, "%d", &n));
+        ASSERT_EQ(EOF, std::fscanf(fp, "%d", &n));
         ASSERT_EQ(EBADF, errno);
     }
     fclose(fp);
@@ -259,10 +259,10 @@ TEST(stdio,sscanf)
 
 TEST(stdio,fseek)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fseek_failable_by__(EBADF)
     {
-        ASSERT_EQ(-1, fseek(fp, 0, SEEK_SET));
+        ASSERT_EQ(-1, std::fseek(fp, 0, SEEK_SET));
         ASSERT_EQ(EBADF, errno);
     }
     fclose(fp);
@@ -270,10 +270,10 @@ TEST(stdio,fseek)
 
 TEST(stdio,ftell)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     ftell_failable_by__(EBADF)
     {
-        ASSERT_EQ(-1, ftell(fp));
+        ASSERT_EQ(-1, std::ftell(fp));
         ASSERT_EQ(EBADF, errno);
     }
     fclose(fp);
@@ -281,11 +281,11 @@ TEST(stdio,ftell)
 
 TEST(stdio,fgetpos)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fgetpos_failable_by__(EBADF)
     {
         fpos_t pos;
-        ASSERT_EQ(-1, fgetpos(fp, &pos));
+        ASSERT_EQ(-1, std::fgetpos(fp, &pos));
         ASSERT_EQ(EBADF, errno);
     }
     fclose(fp);
@@ -293,12 +293,12 @@ TEST(stdio,fgetpos)
 
 TEST(stdio,fsetpos)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     fsetpos_failable_by__(EBADF)
     {
         fpos_t pos;
-        ASSERT_EQ(0, fgetpos(fp, &pos));
-        ASSERT_EQ(-1, fsetpos(fp, &pos));
+        ASSERT_EQ(0, std::fgetpos(fp, &pos));
+        ASSERT_EQ(-1, std::fsetpos(fp, &pos));
         ASSERT_EQ(EBADF, errno);
     }
     fclose(fp);
@@ -308,7 +308,7 @@ TEST(stdio,remove)
 {
     remove_failable_by__(EACCES)
     {
-        ASSERT_EQ(-1, remove("/tmp/foo"));
+        ASSERT_EQ(-1, std::remove("/tmp/foo"));
         ASSERT_EQ(EACCES, errno);
     }
 }
@@ -317,18 +317,18 @@ TEST(stdio,rename)
 {
     rename_failable_by__(EACCES)
     {
-        ASSERT_EQ(-1, rename("/tmp/foo", "/tmp/bar"));
+        ASSERT_EQ(-1, std::rename("/tmp/foo", "/tmp/bar"));
         ASSERT_EQ(EACCES, errno);
     }
 }
 
 TEST(stdio,setvbuf)
 {
-    FILE* fp = tmpfile();
+    FILE* fp = std::tmpfile();
     setvbuf_failable_by__(ENOMEM)
     {
         char buf[1024];
-        ASSERT_EQ(-1, setvbuf(fp, buf, _IOLBF, sizeof(buf)/sizeof(buf[0])));
+        ASSERT_EQ(-1, std::setvbuf(fp, buf, _IOLBF, sizeof(buf)/sizeof(buf[0])));
         ASSERT_EQ(ENOMEM, errno);
     }
     fclose(fp);
@@ -338,7 +338,7 @@ TEST(stdio,tmpfile)
 {
     tmpfile_failable_by__(EEXIST)
     {
-        ASSERT_EQ(NULL, tmpfile());
+        ASSERT_EQ(NULL, std::tmpfile());
         ASSERT_EQ(EEXIST, errno);
     }
 }
@@ -348,6 +348,6 @@ TEST(stdio,tmpnam)
     tmpnam_failable__
     {
         char buf[1024];
-        ASSERT_EQ(NULL, tmpnam(buf));
+        ASSERT_EQ(NULL, std::tmpnam(buf));
     }
 }
