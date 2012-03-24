@@ -5,7 +5,8 @@ stdarg \
 stdio \
 stdlib \
 string \
-time
+time \
+unistd
 
 # not a standard libtool library name
 check_LTLIBRARIES=\
@@ -20,7 +21,8 @@ stdarg/lib.la \
 stdio/lib.la \
 stdlib/lib.la \
 string/lib.la \
-time/lib.la
+time/lib.la \
+unistd/lib.la
 
 check_PROGRAMS=\
 test
@@ -42,7 +44,11 @@ $(AM_CXXFLAGS) \
 test_LDFLAGS=\
 -Wl,--whole-archive,lib.a,--no-whole-archive \
 -L$(top_builddir)/src -lift \
+-lcrypt \
 @PTHREAD_LIBS@
+
+test_LDADD=\
+lib.a
 
 TESTS_ENVIRONMENT=\
 env LD_PRELOAD=$(top_builddir)/src/.libs/libift_preload.so:$$LD_PRELOAD

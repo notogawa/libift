@@ -27,7 +27,6 @@ chdir.cpp \
 fchdir.cpp \
 getcwd.cpp \
 get_current_dir_name.cpp \
-getwd.cpp \
 dup.cpp \
 dup2.cpp \
 dup3.cpp \
@@ -40,7 +39,6 @@ nice.cpp \
 pathconf.cpp \
 fpathconf.cpp \
 sysconf.cpp \
-getpgrp.cpp \
 getpgid.cpp \
 setpgid.cpp \
 setpgrp.cpp \
