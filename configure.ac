@@ -85,6 +85,8 @@ AC_CONFIG_FILES([Makefile
                  src/stdio/Makefile
                  src/stdlib/Makefile
                  src/string/Makefile
+                 src/sys/Makefile
+                 src/sys/socket/Makefile
                  src/time/Makefile
                  src/unistd/Makefile
                  test/Makefile
@@ -94,6 +96,8 @@ AC_CONFIG_FILES([Makefile
                  test/stdio/Makefile
                  test/stdlib/Makefile
                  test/string/Makefile
+                 test/sys/Makefile
+                 test/sys/socket/Makefile
                  test/time/Makefile
                  test/unistd/Makefile
                  libift.pc

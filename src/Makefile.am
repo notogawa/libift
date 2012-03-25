@@ -4,6 +4,7 @@ signal \
 stdio \
 stdlib \
 string \
+sys \
 time \
 unistd
 
@@ -42,6 +43,7 @@ signal/lib.la \
 stdio/lib.la \
 stdlib/lib.la \
 string/lib.la \
+sys/lib.la \
 time/lib.la \
 unistd/lib.la
 
