@@ -1,5 +1,6 @@
 SUBDIRS=\
 epoll \
+select \
 socket
 
 check_LTLIBRARIES=\
@@ -9,4 +10,5 @@ lib_la_SOURCES=
 
 lib_la_LIBADD=\
 epoll/lib.la \
+select/lib.la \
 socket/lib.la

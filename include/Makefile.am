@@ -6,6 +6,7 @@ ift/stdio.hpp \
 ift/stdlib.hpp \
 ift/string.hpp \
 ift/sys/epoll.hpp \
+ift/sys/select.hpp \
 ift/sys/socket.hpp \
 ift/time.hpp \
 ift/unistd.hpp \
