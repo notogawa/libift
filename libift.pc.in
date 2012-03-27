@@ -1,10 +1,10 @@
-prefix=/usr/local
-exec_prefix=${prefix}
-libdir=${exec_prefix}/lib
-includedir=${prefix}/include
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
 
-Name: libift
+Name: @PACKAGE@
 Description: Library for Incremental Failure Test.
-Version: 0.1
+Version: @VERSION@
 Cflags: -I${includedir}
 Libs: -L${libdir} -lift
