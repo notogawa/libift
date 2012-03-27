@@ -12,13 +12,23 @@ Install
 
 ::
 
-  $ ./configure
+  $ ./configure --prefix=/where/to/install
   $ make
   $ sudo make install
 
 Usage
 =====
 
-Link libift to your test program (see "sample" directory) and
+Write white box test (see "sample" directory) and link libift.
 
-  $ runift your_test_program with arguments
+::
+
+  $ PKG_CONFIG_DIR=/where/to/install/lib/pkgconfig:$PKG_CONFIG_DIR
+  $ g++ your_test.cpp -o your_test $(pkg-config libift --cflags --libs)
+
+Then, run test, like this.
+
+::
+
+  $ runift your_test
+

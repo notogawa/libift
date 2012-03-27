@@ -2,7 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([libift], [0.1], [n.ohkawa@gmail.com], [libift])
+AC_INIT([libift], [0.1], [n.ohkawa@gmail.com],
+        [libift], [https://github.com/notogawa/libift])
 AM_INIT_AUTOMAKE([foreign -W -Wall])
 AC_CONFIG_SRCDIR([src/libift_preload.cpp])
 AC_CONFIG_HEADERS([config.h])
