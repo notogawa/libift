@@ -28,7 +28,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtest/gtest.h>
+#define _GLIBCXX_USE_C99 1
+#include <cstdio>
 #include <fcntl.h>
+#include <cerrno>
 #include "ift/stdio.hpp"
 
 TEST(stdio,fopen)

@@ -29,6 +29,6 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/socket.h>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(int, recvmsg, (int, struct msghdr*, int), -1,
+IFT_BASIC_IMPL(ssize_t, recvmsg, (int, struct msghdr*, int), -1,
                (int sockfd, struct msghdr* msg, int flags),
                (sockfd, msg, flags), )

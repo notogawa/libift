@@ -29,6 +29,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtest/gtest.h>
 #include <sys/select.h>
+#include <cerrno>
 #include "ift/sys/select.hpp"
 
 TEST(select,select)

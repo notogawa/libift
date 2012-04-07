@@ -31,6 +31,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <cerrno>
 #include "ift/sys/socket.hpp"
 
 TEST(socket,socket)

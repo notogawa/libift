@@ -28,14 +28,17 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <gtest/gtest.h>
+#define _GLIBCXX_USE_C99 1
 #include <cstdarg>
+#include <cstdio>
+#include <cerrno>
 #include "ift/stdarg.hpp"
 
 namespace {
 
 void test_vprintf(int a, ...)
 {
-    va_list argptr;
+    std::va_list argptr;
     va_start(argptr, a);
     ASSERT_GT(0, std::vprintf("test\n", argptr));
     va_end(argptr);
@@ -44,7 +47,7 @@ void test_vprintf(int a, ...)
 void test_vfprintf(int a, ...)
 {
     FILE* fp = std::tmpfile();
-    va_list argptr;
+    std::va_list argptr;
     va_start(argptr, a);
     ASSERT_GT(0, std::vfprintf(fp, "test\n", argptr));
     va_end(argptr);
@@ -54,7 +57,7 @@ void test_vfprintf(int a, ...)
 void test_vsprintf(int a, ...)
 {
     char buf[1024];
-    va_list argptr;
+    std::va_list argptr;
     va_start(argptr, a);
     ASSERT_GT(0, std::vsprintf(buf, "test\n", argptr));
     va_end(argptr);
@@ -63,7 +66,7 @@ void test_vsprintf(int a, ...)
 void test_vsnprintf(int a, ...)
 {
     char buf[1024];
-    va_list argptr;
+    std::va_list argptr;
     va_start(argptr, a);
     ASSERT_GT(0, std::vsnprintf(buf, 2, "test\n", argptr));
     va_end(argptr);
@@ -71,7 +74,7 @@ void test_vsnprintf(int a, ...)
 
 void test_vscanf(int a, ...)
 {
-    va_list argptr;
+    std::va_list argptr;
     va_start(argptr, a);
     ASSERT_EQ(EOF, std::vscanf("%d", argptr));
     ASSERT_EQ(ERANGE, errno);
@@ -81,7 +84,7 @@ void test_vscanf(int a, ...)
 void test_vfscanf(int a, ...)
 {
     FILE* fp = std::tmpfile();
-    va_list argptr;
+    std::va_list argptr;
     va_start(argptr, a);
     ASSERT_EQ(EOF, std::vfscanf(fp, "%d", argptr));
     ASSERT_EQ(EBADF, errno);
@@ -91,7 +94,7 @@ void test_vfscanf(int a, ...)
 
 void test_vsscanf(int a, ...)
 {
-    va_list argptr;
+    std::va_list argptr;
     va_start(argptr, a);
     ASSERT_EQ(EOF, std::vsscanf("12", "%d", argptr));
     ASSERT_EQ(ENOMEM, errno);

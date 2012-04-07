@@ -30,6 +30,7 @@
 #include <gtest/gtest.h>
 #include <sys/epoll.h>
 #include <fcntl.h>
+#include <cerrno>
 #include "ift/sys/epoll.hpp"
 
 TEST(epoll,epoll_create)
