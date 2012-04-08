@@ -29,4 +29,4 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/epoll.h>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(int, epoll_create1, (int), -1, (int flags), (flags), throw ())
+IFT_BASIC_IMPL(int, epoll_create1, (int), -1, (int flags), (flags))

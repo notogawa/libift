@@ -29,4 +29,4 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <unistd.h>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(int, fsync, (int), -1, (int fd), (fd), )
+IFT_BASIC_IMPL(int, fsync, (int), -1, (int fd), (fd))

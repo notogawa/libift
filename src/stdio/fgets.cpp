@@ -30,4 +30,4 @@
 #include <cstdio>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(char*, fgets, (char*, int, FILE*),
-               NULL, (char* s, int size, FILE* stream), (s, size, stream), )
+               NULL, (char* s, int size, FILE* stream), (s, size, stream))

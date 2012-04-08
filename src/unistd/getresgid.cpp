@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, getresgid, (gid_t*, gid_t*, gid_t*), -1,
                (gid_t* rgid, gid_t* egid, uid_t* sgid),
-               (rgid, egid, sgid), throw ())
+               (rgid, egid, sgid))

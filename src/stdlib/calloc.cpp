@@ -43,7 +43,7 @@ __thread int ____ifs_errno = 0;
 
 // our temporary calloc used until we get the address of libc provided
 // one in our interposed calloc
-void* temporary_calloc(size_t nmemb, size_t size) throw ()
+void* temporary_calloc(size_t nmemb, size_t size)
 {
     return NULL;
 }
@@ -73,7 +73,7 @@ void ____ift_calloc_test(bool enable, int error)
     ____ifs_errno = ____ifs_locked ? 0 : error;
 }
 
-void* calloc (size_t nmemb, size_t size) throw ()
+void* calloc (size_t nmemb, size_t size)
 {
     if (____ifs_locked || ift::scoped_global_lock::locked())
         return ____ifs_calloc_orig (nmemb, size);

@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, dup3, (int, int, int), -1,
                (int oldfd, int newfd, int flags),
-               (oldfd, newfd, flags), throw ())
+               (oldfd, newfd, flags))

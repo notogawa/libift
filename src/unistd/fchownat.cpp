@@ -32,4 +32,4 @@
 IFT_BASIC_IMPL(int, fchownat, (int, const char*, uid_t, gid_t, int), -1,
                (int dirfd, const char* pathname,
                 uid_t owner, gid_t group, int flags),
-               (dirfd, pathname, owner, group, flags), throw ())
+               (dirfd, pathname, owner, group, flags))

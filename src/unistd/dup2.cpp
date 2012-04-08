@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, dup2, (int, int), -1,
-               (int oldfd, int newfd), (oldfd, newfd), throw ())
+               (int oldfd, int newfd), (oldfd, newfd))

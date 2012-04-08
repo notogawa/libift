@@ -30,4 +30,4 @@
 #include <cstdio>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, fputs, (const char*, FILE*),
-               EOF, (const char* s, FILE* stream), (s, stream), )
+               EOF, (const char* s, FILE* stream), (s, stream))

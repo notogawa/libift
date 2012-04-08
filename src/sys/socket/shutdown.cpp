@@ -30,4 +30,4 @@
 #include <sys/socket.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, shutdown, (int, int), -1,
-               (int sockfd, int how), (sockfd, how), throw ())
+               (int sockfd, int how), (sockfd, how))

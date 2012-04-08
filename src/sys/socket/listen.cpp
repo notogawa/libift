@@ -30,4 +30,4 @@
 #include <sys/socket.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, listen, (int, int), -1,
-               (int sockfd, int backlog), (sockfd, backlog), throw ())
+               (int sockfd, int backlog), (sockfd, backlog))

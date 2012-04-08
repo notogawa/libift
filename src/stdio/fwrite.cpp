@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(size_t, fwrite, (const void*, size_t, size_t, FILE*),
                0, (const void* ptr, size_t size, size_t nmemb, FILE* stream),
-               (ptr, size, nmemb, stream), )
+               (ptr, size, nmemb, stream))

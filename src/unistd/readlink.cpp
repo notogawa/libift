@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(ssize_t, readlink, (const char*, char*, size_t), -1,
                (const char* path, char* buf, size_t bufsiz),
-               (path, buf, bufsiz), throw ())
+               (path, buf, bufsiz))

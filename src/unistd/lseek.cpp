@@ -30,5 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(off_t, lseek, (int, off_t, int), (off_t)(-1),
-               (int fd, off_t offset, int whence),
-               (fd, offset, whence), throw ())
+               (int fd, off_t offset, int whence), (fd, offset, whence))

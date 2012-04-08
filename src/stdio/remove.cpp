@@ -30,4 +30,4 @@
 #include <cstdio>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, remove, (const char*), -1,
-               (const char* pathname), (pathname), throw ())
+               (const char* pathname), (pathname))

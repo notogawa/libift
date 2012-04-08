@@ -29,4 +29,4 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <unistd.h>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(pid_t, getpgid, (pid_t), -1, (pid_t pid), (pid), throw ())
+IFT_BASIC_IMPL(pid_t, getpgid, (pid_t), -1, (pid_t pid), (pid))

@@ -30,4 +30,4 @@
 #include <cstdio>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, fsetpos, (FILE*, const fpos_t*), -1,
-               (FILE* stream, const fpos_t* pos), (stream, pos), )
+               (FILE* stream, const fpos_t* pos), (stream, pos))

@@ -30,4 +30,4 @@
 #include <cstdlib>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(char*, getenv, (const char*), NULL,
-               (const char* name), (name), throw ())
+               (const char* name), (name))

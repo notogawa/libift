@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, faccessat, (int, const char*, int, int), -1,
                (int dirfd, const char* pathname, int mode, int flags),
-               (dirfd, pathname, mode, flags), throw ())
+               (dirfd, pathname, mode, flags))

@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, execvp, (const char*, char* const[]), -1,
-               (const char* file, char* const argv[]), (file, argv), throw ())
+               (const char* file, char* const argv[]), (file, argv))

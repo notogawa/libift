@@ -30,4 +30,4 @@
 #include <csignal>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(sighandler_t, signal, (int, sighandler_t), SIG_ERR,
-               (int signum, sighandler_t handler), (signum, handler), throw ())
+               (int signum, sighandler_t handler), (signum, handler))

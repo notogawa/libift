@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, socketpair, (int, int, int, int[2]), -1,
                (int domain, int type, int protocol, int sv[2]),
-               (domain, type, protocol, sv), throw ())
+               (domain, type, protocol, sv))

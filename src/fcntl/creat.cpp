@@ -30,4 +30,4 @@
 #include <fcntl.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, creat, (const char*, mode_t), -1,
-               (const char* pathname, mode_t mode), (pathname, mode), )
+               (const char* pathname, mode_t mode), (pathname, mode))

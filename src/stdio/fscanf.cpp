@@ -33,6 +33,6 @@
 #include "vargs_impl.hpp"
 IFT_BASIC_IMPL(int, vfscanf, (FILE*, const char*, va_list), -1,
                (FILE* stream, const char *format, va_list ap),
-               (stream, format, ap), )
+               (stream, format, ap))
 IFT_VARGS_IMPL(int, fscanf, EOF, (FILE* stream, const char* format, ...),
-               vfscanf, (stream, format, argptr), )
+               vfscanf, (stream, format, argptr))

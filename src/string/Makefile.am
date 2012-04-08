@@ -6,3 +6,7 @@ lib.la
 
 lib_la_SOURCES=\
 strerror.cpp
+
+lib_la_CXXFLAGS=\
+$(AM_CXXFLAGS) \
+-fno-exceptions

@@ -35,4 +35,4 @@ IFT_BASIC_IMPL(int, pselect,
                (int nfds, fd_set* readfds, fd_set* writefds,
                 fd_set* exceptfds, const struct timespec* timeout,
                 const sigset_t* sigmask),
-               (nfds, readfds, writefds, exceptfds, timeout, sigmask), )
+               (nfds, readfds, writefds, exceptfds, timeout, sigmask))

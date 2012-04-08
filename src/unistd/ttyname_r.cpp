@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, ttyname_r, (int, char*, size_t), errno,
-               (int fd, char *buf, size_t buflen), (fd, buf, buflen), throw ())
+               (int fd, char *buf, size_t buflen), (fd, buf, buflen))

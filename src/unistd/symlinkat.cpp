@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, symlinkat, (const char*, int, const char*), -1,
                (const char* oldpath, int newdirfd, const char* newpath),
-               (oldpath, newdirfd, newpath), throw ())
+               (oldpath, newdirfd, newpath))

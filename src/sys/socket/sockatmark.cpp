@@ -29,4 +29,4 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/socket.h>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(int, sockatmark, (int), -1, (int sockfd), (sockfd), throw ())
+IFT_BASIC_IMPL(int, sockatmark, (int), -1, (int sockfd), (sockfd))

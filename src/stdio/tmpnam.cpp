@@ -29,4 +29,4 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <cstdio>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(char*, tmpnam, (char*), NULL, (char* s), (s), throw ())
+IFT_BASIC_IMPL(char*, tmpnam, (char*), NULL, (char* s), (s))

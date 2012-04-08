@@ -25,3 +25,7 @@ accept4.cpp \
 shutdown.cpp \
 sockatmark.cpp \
 isfdtype.cpp
+
+lib_la_CXXFLAGS=\
+$(AM_CXXFLAGS) \
+-fno-exceptions

@@ -7,3 +7,7 @@ lib.la
 lib_la_SOURCES=\
 select.cpp \
 pselect.cpp
+
+lib_la_CXXFLAGS=\
+$(AM_CXXFLAGS) \
+-fno-exceptions

@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, getsockname, (int, struct sockaddr*, socklen_t*), -1,
                (int sockfd, struct sockaddr* addr, socklen_t* addrlen),
-               (sockfd, addr, addrlen), throw ())
+               (sockfd, addr, addrlen))

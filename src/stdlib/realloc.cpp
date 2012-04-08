@@ -30,4 +30,4 @@
 #include <cstdlib>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(void*, realloc, (void*, size_t),
-               NULL, (void* ptr, size_t size), (ptr, size), throw ())
+               NULL, (void* ptr, size_t size), (ptr, size))

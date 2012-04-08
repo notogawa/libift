@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, daemon, (int, int), -1,
-               (int nochdir, int noclose), (nochdir, noclose), throw ())
+               (int nochdir, int noclose), (nochdir, noclose))

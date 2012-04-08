@@ -30,4 +30,4 @@
 #include <cstdio>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(FILE*, fdopen, (int, const char*),
-               NULL, (int fd, const char* mode), (fd, mode), throw ())
+               NULL, (int fd, const char* mode), (fd, mode))

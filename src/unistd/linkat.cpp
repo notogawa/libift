@@ -32,4 +32,4 @@
 IFT_BASIC_IMPL(int, linkat, (int, const char*, int, const char*, int), -1,
                (int olddirfd, const char* oldpath,
                 int newdirfd, const char* newpath, int flags),
-               (olddirfd, oldpath, newdirfd, newpath, flags), throw ())
+               (olddirfd, oldpath, newdirfd, newpath, flags))

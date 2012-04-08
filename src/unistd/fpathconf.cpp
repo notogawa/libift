@@ -29,5 +29,4 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <unistd.h>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(long, fpathconf, (int, int), -1,
-               (int fd, int name), (fd, name), throw ())
+IFT_BASIC_IMPL(long, fpathconf, (int, int), -1, (int fd, int name), (fd, name))

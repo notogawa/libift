@@ -29,8 +29,8 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/socket.h>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(ssize_t, recvfrom, (int, void*, size_t, int,
-                                   struct sockaddr*, socklen_t*), -1,
+IFT_BASIC_IMPL(ssize_t, recvfrom,
+               (int, void*, size_t, int, struct sockaddr*, socklen_t*), -1,
                (int sockfd, void* buf, size_t len, int flags,
                 struct sockaddr* src_addr, socklen_t* addrlen),
-               (sockfd, buf, len, flags, src_addr, addrlen), )
+               (sockfd, buf, len, flags, src_addr, addrlen))

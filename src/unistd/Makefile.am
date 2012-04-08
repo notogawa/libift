@@ -91,3 +91,7 @@ sbrk.cpp \
 lockf.cpp \
 fdatasync.cpp \
 crypt.cpp
+
+lib_la_CXXFLAGS=\
+$(AM_CXXFLAGS) \
+-fno-exceptions

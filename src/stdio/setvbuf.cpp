@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, setvbuf, (FILE*, char*, int, size_t), -1,
                (FILE* stream, char* buf, int mode, size_t size),
-               (stream, buf, mode, size), throw ())
+               (stream, buf, mode, size))

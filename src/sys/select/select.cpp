@@ -33,4 +33,4 @@ IFT_BASIC_IMPL(int, select,
                (int, fd_set*, fd_set*, fd_set*, struct timeval*), -1,
                (int nfds, fd_set* readfds, fd_set* writefds,
                 fd_set* exceptfds, struct timeval* timeout),
-               (nfds, readfds, writefds, exceptfds, timeout), )
+               (nfds, readfds, writefds, exceptfds, timeout))

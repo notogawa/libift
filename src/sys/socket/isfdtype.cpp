@@ -29,5 +29,4 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/socket.h>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(int, isfdtype, (int, int), -1,
-               (int fd, int type), (fd, type), throw ())
+IFT_BASIC_IMPL(int, isfdtype, (int, int), -1, (int fd, int type), (fd, type))

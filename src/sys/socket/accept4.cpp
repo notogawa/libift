@@ -30,5 +30,6 @@
 #include <sys/socket.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, accept4, (int, struct sockaddr*, socklen_t*, int), -1,
-               (int sockfd, struct sockaddr *addr, socklen_t *addrlen, int flags),
-               (sockfd, addr, addrlen, flags), )
+               (int sockfd, struct sockaddr *addr,
+                socklen_t *addrlen, int flags),
+               (sockfd, addr, addrlen, flags))

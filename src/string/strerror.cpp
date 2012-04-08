@@ -42,5 +42,4 @@ char* mkval(int errnum)
 
 } // anonymous namespace
 
-IFT_BASIC_IMPL(char*, strerror, (int), mkval(errnum),
-               (int errnum), (errnum), throw ())
+IFT_BASIC_IMPL(char*, strerror, (int), mkval(errnum), (int errnum), (errnum))

@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(char*, getpass, (const char*), NULL,
-               (const char* prompt), (prompt), )
+               (const char* prompt), (prompt))

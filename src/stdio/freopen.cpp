@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(FILE*, freopen, (const char*, const char*, FILE*),
                NULL, (const char* path, const char* mode, FILE* stream),
-               (path, mode, stream), )
+               (path, mode, stream))

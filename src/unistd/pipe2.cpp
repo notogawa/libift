@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, pipe2, (int[2], int), -1,
-               (int pipefd[2], int flags), (pipefd, flags), throw ())
+               (int pipefd[2], int flags), (pipefd, flags))

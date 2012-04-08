@@ -36,7 +36,7 @@
 #include "cdecls.hpp"
 #include "scoped_global_lock.hpp"
 
-#define IFT_BASIC_IMPL(RTYPE, NAME, ATYPES, RETURN, ARGS, CALL, THROW)  \
+#define IFT_BASIC_IMPL(RTYPE, NAME, ATYPES, RETURN, ARGS, CALL)         \
     typedef RTYPE (*function_t)ATYPES;                                  \
                                                                         \
     namespace {                                                         \
@@ -65,7 +65,7 @@
         ____ifs_##NAME##_errno = ____ifs_##NAME##_locked ? 0 : error;   \
     }                                                                   \
                                                                         \
-    RTYPE NAME ARGS THROW                                               \
+    RTYPE NAME ARGS                                                     \
     {                                                                   \
         if (____ifs_##NAME##_locked ||                                  \
             ift::scoped_global_lock::locked())                          \

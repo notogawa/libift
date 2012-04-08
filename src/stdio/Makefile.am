@@ -37,3 +37,7 @@ rename.cpp \
 setvbuf.cpp \
 tmpfile.cpp \
 tmpnam.cpp
+
+lib_la_CXXFLAGS=\
+$(AM_CXXFLAGS) \
+-fno-exceptions

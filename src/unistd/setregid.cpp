@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, setregid, (gid_t, gid_t), -1,
-               (gid_t rgid, gid_t egid), (rgid, egid), throw ())
+               (gid_t rgid, gid_t egid), (rgid, egid))

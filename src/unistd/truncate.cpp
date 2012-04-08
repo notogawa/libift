@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, truncate, (const char*, off_t), -1,
-               (const char* path, off_t length), (path, length), throw ())
+               (const char* path, off_t length), (path, length))

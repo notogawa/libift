@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(void*, sbrk, (intptr_t), (void*)(-1),
-               (intptr_t increment), (increment), throw ())
+               (intptr_t increment), (increment))

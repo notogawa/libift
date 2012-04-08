@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, fseek, (FILE*, long, int),
                -1, (FILE* stream, long offset, int whence),
-               (stream, offset, whence), )
+               (stream, offset, whence))

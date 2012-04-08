@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(ssize_t, recv, (int, void*, size_t, int), -1,
                (int sockfd, void* buf, size_t len, int flags),
-               (sockfd, buf, len, flags), )
+               (sockfd, buf, len, flags))

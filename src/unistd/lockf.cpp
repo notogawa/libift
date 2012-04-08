@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, lockf, (int, int, off_t), -1,
-               (int fd, int cmd, off_t len), (fd, cmd, len), )
+               (int fd, int cmd, off_t len), (fd, cmd, len))

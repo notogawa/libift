@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, epoll_ctl, (int, int, int, struct epoll_event*), -1,
                (int epfd, int op, int fd, struct epoll_event* event),
-               (epfd, op, fd, event), throw ())
+               (epfd, op, fd, event))

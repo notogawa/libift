@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, chown, (const char*, uid_t, gid_t), -1,
                (const char* path, uid_t owner, gid_t group),
-               (path, owner, group), throw ())
+               (path, owner, group))

@@ -29,5 +29,4 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ctime>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(time_t, time, (time_t*), (clock_t)(-1),
-               (time_t* t), (t), throw ())
+IFT_BASIC_IMPL(time_t, time, (time_t*), (clock_t)(-1), (time_t* t), (t))

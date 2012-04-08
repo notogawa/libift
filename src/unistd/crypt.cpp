@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(char*, crypt, (const char*, const char*), NULL,
-               (const char* key, const char* salt), (key, salt), throw ())
+               (const char* key, const char* salt), (key, salt))

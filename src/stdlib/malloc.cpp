@@ -29,4 +29,4 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <cstdlib>
 #include "basic_impl.hpp"
-IFT_BASIC_IMPL(void*, malloc, (size_t), NULL, (size_t size), (size), throw ())
+IFT_BASIC_IMPL(void*, malloc, (size_t), NULL, (size_t size), (size))

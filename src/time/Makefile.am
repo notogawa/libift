@@ -8,3 +8,7 @@ lib_la_SOURCES=\
 clock.cpp \
 strftime.cpp \
 time.cpp
+
+lib_la_CXXFLAGS=\
+$(AM_CXXFLAGS) \
+-fno-exceptions

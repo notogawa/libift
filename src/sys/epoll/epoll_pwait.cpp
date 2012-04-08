@@ -33,4 +33,4 @@ IFT_BASIC_IMPL(int, epoll_pwait,
                (int, struct epoll_event*, int, int, const sigset_t*), -1,
                (int epfd, struct epoll_event* events,
                 int maxevents, int timeout, const sigset_t* sigmask),
-               (epfd, events, maxevents, timeout, sigmask), )
+               (epfd, events, maxevents, timeout, sigmask))

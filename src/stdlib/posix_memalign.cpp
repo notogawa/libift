@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, posix_memalign, (void**, size_t, size_t), errno,
                (void** memptr, size_t alignment, size_t size),
-               (memptr, alignment, size), throw ())
+               (memptr, alignment, size))

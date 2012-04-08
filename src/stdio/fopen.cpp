@@ -30,4 +30,4 @@
 #include <cstdio>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(FILE*, fopen, (const char*, const char*),
-               NULL, (const char* path, const char* mode), (path, mode), )
+               NULL, (const char* path, const char* mode), (path, mode))

@@ -36,7 +36,7 @@
 #include "cdecls.hpp"
 #include "scoped_global_lock.hpp"
 
-#define IFT_VARGS_IMPL(RTYPE, NAME, RETURN, ARGS, VFUNC, VCALL, THROW)  \
+#define IFT_VARGS_IMPL(RTYPE, NAME, RETURN, ARGS, VFUNC, VCALL)         \
     namespace {                                                         \
                                                                         \
     __thread bool ____ifs_##NAME##_locked = true;                       \
@@ -52,7 +52,7 @@
         ____ifs_##NAME##_errno = ____ifs_##NAME##_locked ? 0 : error;   \
     }                                                                   \
                                                                         \
-    RTYPE NAME ARGS THROW                                               \
+    RTYPE NAME ARGS                                                     \
     {                                                                   \
         if (____ifs_##NAME##_locked ||                                  \
             ift::scoped_global_lock::locked())                          \
@@ -82,6 +82,5 @@
     }                                                                   \
                                                                         \
     END_C_DECLS
-
 
 #endif

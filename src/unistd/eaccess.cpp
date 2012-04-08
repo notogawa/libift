@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, eaccess, (const char*, int), -1,
-               (const char* pathname, int mode), (pathname, mode), throw ())
+               (const char* pathname, int mode), (pathname, mode))

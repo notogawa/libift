@@ -30,5 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, symlink, (const char*, const char*), -1,
-               (const char* oldpath, const char* newpath),
-               (oldpath, newpath), throw ())
+               (const char* oldpath, const char* newpath), (oldpath, newpath))

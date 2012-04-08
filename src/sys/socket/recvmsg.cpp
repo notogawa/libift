@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(ssize_t, recvmsg, (int, struct msghdr*, int), -1,
                (int sockfd, struct msghdr* msg, int flags),
-               (sockfd, msg, flags), )
+               (sockfd, msg, flags))

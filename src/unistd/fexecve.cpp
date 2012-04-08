@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, fexecve, (int, char* const[], char* const[]), -1,
                (int fd, char *const argv[], char *const envp[]),
-               (fd, argv, envp), throw ())
+               (fd, argv, envp))

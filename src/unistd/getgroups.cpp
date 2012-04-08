@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, getgroups, (int, gid_t[]), -1,
-               (int size, gid_t list[]), (size, list), throw ())
+               (int size, gid_t list[]), (size, list))

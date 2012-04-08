@@ -32,4 +32,4 @@
 IFT_BASIC_IMPL(size_t, strftime,
                (char*, size_t, const char*, const struct tm*), 0,
                (char* s, size_t max, const char* format, const struct tm* tm),
-               (s, max, format, tm), throw ())
+               (s, max, format, tm))

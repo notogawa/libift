@@ -33,6 +33,6 @@
 #include "vargs_impl.hpp"
 IFT_BASIC_IMPL(int, vsprintf, (char*, const char*, va_list), -1,
                (char* str, const char *format, va_list ap),
-               (str, format, ap), throw ())
+               (str, format, ap))
 IFT_VARGS_IMPL(int, sprintf, -1, (char* str, const char* format, ...),
-               vsprintf, (str, format, argptr), throw ())
+               vsprintf, (str, format, argptr))

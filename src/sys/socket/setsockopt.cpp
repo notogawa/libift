@@ -32,4 +32,4 @@
 IFT_BASIC_IMPL(int, setsockopt, (int, int, int, const void*, socklen_t), -1,
                (int sockfd, int level, int optname,
                 const void* optval, socklen_t optlen),
-               (sockfd, level, optname, optval, optlen), throw ())
+               (sockfd, level, optname, optval, optlen))

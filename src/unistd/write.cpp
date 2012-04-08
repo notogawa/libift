@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(ssize_t, write, (int, const void*, size_t), -1,
-               (int fd, const void *buf, size_t count), (fd, buf, count), )
+               (int fd, const void *buf, size_t count), (fd, buf, count))

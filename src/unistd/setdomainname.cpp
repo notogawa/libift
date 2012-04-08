@@ -30,4 +30,4 @@
 #include <unistd.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, setdomainname, (const char*, size_t), -1,
-               (const char *name, size_t len), (name, len), throw ())
+               (const char *name, size_t len), (name, len))

@@ -10,3 +10,7 @@ epoll_create1.cpp \
 epoll_ctl.cpp \
 epoll_wait.cpp \
 epoll_pwait.cpp
+
+lib_la_CXXFLAGS=\
+$(AM_CXXFLAGS) \
+-fno-exceptions

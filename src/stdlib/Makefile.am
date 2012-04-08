@@ -11,3 +11,7 @@ realloc.cpp \
 getenv.cpp \
 system.cpp \
 posix_memalign.cpp
+
+lib_la_CXXFLAGS=\
+$(AM_CXXFLAGS) \
+-fno-exceptions

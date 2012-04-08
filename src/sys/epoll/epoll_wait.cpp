@@ -32,4 +32,4 @@
 IFT_BASIC_IMPL(int, epoll_wait, (int, struct epoll_event*, int, int), -1,
                (int epfd, struct epoll_event* events,
                 int maxevents, int timeout),
-               (epfd, events, maxevents, timeout), )
+               (epfd, events, maxevents, timeout))

@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(ssize_t, pread, (int, void*, size_t, off_t), -1,
                (int fd, void* buf, size_t count, off_t offset),
-               (fd, buf, count, offset), )
+               (fd, buf, count, offset))

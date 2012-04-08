@@ -31,4 +31,4 @@
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, link, (const char*, const char*), -1,
                (const char* oldpath, const char* newpath),
-               (oldpath, newpath), throw ())
+               (oldpath, newpath))
