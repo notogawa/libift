@@ -43,7 +43,7 @@ __thread int ____ifs_errno = 0;
 
 // our temporary calloc used until we get the address of libc provided
 // one in our interposed calloc
-void* temporary_calloc(size_t nmemb, size_t size)
+void* temporary_calloc(size_t /* nmemb */, size_t /* size */)
 {
     return NULL;
 }
