@@ -33,7 +33,7 @@ namespace ift {
 
 scoped_global_lock::scoped_global_lock()
 {
-    while (!__sync_bool_compare_and_swap (&mutex, recurse, recurse+1));
+    while (!__sync_bool_compare_and_swap (&mutex, recurse, recurse+1)) {}
     ++recurse;
 }
 
