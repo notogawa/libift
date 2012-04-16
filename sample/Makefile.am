@@ -17,12 +17,14 @@ sample.c
 sample_test_CFLAGS=\
 $(AM_CFLAGS) \
 @PTHREAD_CFLAGS@ \
--fno-builtin -O0
+-fno-builtin -O0 \
+-Wno-long-long -Wno-variadic-macros
 
 sample_test_CXXFLAGS=\
 $(AM_CXXFLAGS) \
 @PTHREAD_CFLAGS@ \
--fno-builtin -O0
+-fno-builtin -O0 \
+-Wno-long-long -Wno-variadic-macros
 
 sample_test_LDFLAGS=\
 -L$(top_builddir)/src/ -lift \
