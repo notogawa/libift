@@ -12,4 +12,5 @@ test.cpp
 lib_la_CXXFLAGS=\
 $(AM_CXXFLAGS) \
 @PTHREAD_CFLAGS@ \
--fno-builtin -O0
+-fno-builtin -O0 \
+-Wno-long-long -Wno-variadic-macros
