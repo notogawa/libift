@@ -44,6 +44,8 @@ AC_TYPE_PID_T
 AC_TYPE_SIZE_T
 AC_TYPE_SSIZE_T
 
+AX_TLS([],AC_MSG_ERROR([$CC does not support Thread Local Storage]))
+
 # Checks for library functions.
 AC_FUNC_CHOWN
 AC_FUNC_ERROR_AT_LINE
