@@ -54,8 +54,8 @@ AC_FUNC_REALLOC
 AC_CHECK_FUNCS([dup2 euidaccess fchdir fdatasync ftruncate getcwd gethostname getpass lchown pathconf rmdir select sethostname socket strerror])
 
 # Treat warnings as errors
-AM_CFLAGS="-Wall -Wextra -Werror -ansi -pedantic"
-AM_CXXFLAGS="-Wall -Wextra -Werror -pedantic"
+AM_CFLAGS="-Wall -Wextra -Werror -ansi -pedantic -fno-inline"
+AM_CXXFLAGS="-Wall -Wextra -Werror -pedantic -fno-inline"
 
 # Check for -Wno-error=unused-parameter
 AC_CACHE_CHECK([for gcc -Wno-error=unused-parameter support],
