@@ -45,6 +45,7 @@ $(AM_CXXFLAGS) \
 -Wno-long-long -Wno-variadic-macros
 
 test_LDFLAGS=\
+-no-install \
 -Wl,--whole-archive,lib.a,--no-whole-archive \
 -L$(top_builddir)/src -lift \
 -lcrypt \

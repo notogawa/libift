@@ -27,6 +27,7 @@ $(AM_CXXFLAGS) \
 -Wno-long-long -Wno-variadic-macros
 
 sample_test_LDFLAGS=\
+-no-install \
 -L$(top_builddir)/src/ -lift \
 @PTHREAD_LIBS@
 
