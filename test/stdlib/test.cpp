@@ -27,11 +27,13 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #include <cstdlib>
 #include <cerrno>
 #include "ift/stdlib.hpp"
 
+#ifdef HAVE_MALLOC
 TEST(stdlib,malloc)
 {
     malloc_failable__
@@ -40,7 +42,9 @@ TEST(stdlib,malloc)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_CALLOC
 TEST(stdlib,calloc)
 {
     calloc_failable__
@@ -49,7 +53,9 @@ TEST(stdlib,calloc)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_REALLOC
 TEST(stdlib,realloc)
 {
     void* p = malloc(10);
@@ -60,7 +66,9 @@ TEST(stdlib,realloc)
     }
     free(p);
 }
+#endif
 
+#ifdef HAVE_GETENV
 TEST(stdlib,getenv)
 {
     getenv_failable__
@@ -68,7 +76,9 @@ TEST(stdlib,getenv)
         ASSERT_EQ(NULL, std::getenv("LD_PRELOAD"));
     }
 }
+#endif
 
+#ifdef HAVE_SYSTEM
 TEST(stdlib,system)
 {
     system_failable__
@@ -76,7 +86,9 @@ TEST(stdlib,system)
         ASSERT_EQ(-1, std::system("echo OK"));
     }
 }
+#endif
 
+#ifdef HAVE_POSIX_MEMALIGN
 TEST(stdlib,posix_memalign)
 {
     posix_memalign_failable_by__(ENOMEM)
@@ -85,3 +97,4 @@ TEST(stdlib,posix_memalign)
         ASSERT_EQ(ENOMEM, posix_memalign(&p, sizeof(void*)*2, 10));
     }
 }
+#endif

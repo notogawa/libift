@@ -27,11 +27,13 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #include <sys/select.h>
 #include <cerrno>
 #include "ift/sys/select.hpp"
 
+#ifdef HAVE_SELECT
 TEST(select,select)
 {
     select_failable_by__(ENOMEM)
@@ -42,7 +44,9 @@ TEST(select,select)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_PSELECT
 TEST(select,pselect)
 {
     pselect_failable_by__(ENOMEM)
@@ -54,3 +58,4 @@ TEST(select,pselect)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif

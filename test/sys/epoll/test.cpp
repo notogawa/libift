@@ -27,12 +27,14 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #include <sys/epoll.h>
 #include <fcntl.h>
 #include <cerrno>
 #include "ift/sys/epoll.hpp"
 
+#ifdef HAVE_EPOLL_CREATE
 TEST(epoll,epoll_create)
 {
     epoll_create_failable_by__(EMFILE)
@@ -41,7 +43,9 @@ TEST(epoll,epoll_create)
         ASSERT_EQ(EMFILE, errno);
     }
 }
+#endif
 
+#ifdef HAVE_EPOLL_CREATE1
 TEST(epoll,epoll_create1)
 {
     epoll_create1_failable_by__(EMFILE)
@@ -50,7 +54,9 @@ TEST(epoll,epoll_create1)
         ASSERT_EQ(EMFILE, errno);
     }
 }
+#endif
 
+#ifdef HAVE_EPOLL_CTL
 TEST(epoll,epoll_ctl)
 {
     int epfd = epoll_create(16);
@@ -66,7 +72,9 @@ TEST(epoll,epoll_ctl)
     close(fd);
     close(epfd);
 }
+#endif
 
+#ifdef HAVE_EPOLL_WAIT
 TEST(epoll,epoll_wait)
 {
     int epfd = epoll_create(16);
@@ -78,7 +86,9 @@ TEST(epoll,epoll_wait)
     }
     close(epfd);
 }
+#endif
 
+#ifdef HAVE_EPOLL_PWAIT
 TEST(epoll,epoll_pwait)
 {
     int epfd = epoll_create(16);
@@ -91,3 +101,4 @@ TEST(epoll,epoll_pwait)
     }
     close(epfd);
 }
+#endif

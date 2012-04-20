@@ -27,6 +27,7 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
@@ -34,6 +35,7 @@
 #include <cerrno>
 #include "ift/sys/socket.hpp"
 
+#ifdef HAVE_SOCKET
 TEST(socket,socket)
 {
     socket_failable_by__(EAFNOSUPPORT)
@@ -42,7 +44,9 @@ TEST(socket,socket)
         ASSERT_EQ(EAFNOSUPPORT, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SOCKETPAIR
 TEST(socket,socketpair)
 {
     socketpair_failable_by__(EAFNOSUPPORT)
@@ -52,7 +56,9 @@ TEST(socket,socketpair)
         ASSERT_EQ(EAFNOSUPPORT, errno);
     }
 }
+#endif
 
+#ifdef HAVE_BIND
 TEST(socket,bind)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -67,7 +73,9 @@ TEST(socket,bind)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_GETSOCKNAME
 TEST(socket,getsockname)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -80,7 +88,9 @@ TEST(socket,getsockname)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_CONNECT
 TEST(socket,connect)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -95,7 +105,9 @@ TEST(socket,connect)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_GETPEERNAME
 TEST(socket,getpeername)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -108,7 +120,9 @@ TEST(socket,getpeername)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_SEND
 TEST(socket,send)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -119,7 +133,9 @@ TEST(socket,send)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_RECV
 TEST(socket,recv)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -130,7 +146,9 @@ TEST(socket,recv)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_SENDTO
 TEST(socket,sendto)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -146,7 +164,9 @@ TEST(socket,sendto)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_RECVFROM
 TEST(socket,recvfrom)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -163,7 +183,9 @@ TEST(socket,recvfrom)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_SENDMSG
 TEST(socket,sendmsg)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -175,7 +197,9 @@ TEST(socket,sendmsg)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_RECVMSG
 TEST(socket,recvmsg)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -187,7 +211,9 @@ TEST(socket,recvmsg)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_GETSOCKOPT
 TEST(socket,getsockopt)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -201,7 +227,9 @@ TEST(socket,getsockopt)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_SETSOCKOPT
 TEST(socket,setsockopt)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -214,7 +242,9 @@ TEST(socket,setsockopt)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_LISTEN
 TEST(socket,listen)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -225,7 +255,9 @@ TEST(socket,listen)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_ACCEPT
 TEST(socket,accept)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -238,7 +270,9 @@ TEST(socket,accept)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_ACCEPT4
 TEST(socket,accept4)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -252,7 +286,9 @@ TEST(socket,accept4)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_SHUTDOWN
 TEST(socket,shutdown)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -263,7 +299,9 @@ TEST(socket,shutdown)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_SOCKATMARK
 TEST(socket,sockatmark)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -274,7 +312,9 @@ TEST(socket,sockatmark)
     }
     close(sockfd);
 }
+#endif
 
+#ifdef HAVE_ISFDTYPE
 TEST(socket,isfdtype)
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -285,3 +325,4 @@ TEST(socket,isfdtype)
     }
     close(sockfd);
 }
+#endif

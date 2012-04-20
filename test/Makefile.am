@@ -48,7 +48,7 @@ test_LDFLAGS=\
 -no-install \
 -Wl,--whole-archive,lib.a,--no-whole-archive \
 -L$(top_builddir)/src -lift \
--lcrypt \
+@CRYPT_LIBS@ \
 @PTHREAD_LIBS@
 
 test_LDADD=\

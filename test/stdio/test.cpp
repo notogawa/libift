@@ -27,6 +27,7 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #define _GLIBCXX_USE_C99 1
 #include <cstdio>
@@ -34,6 +35,7 @@
 #include <cerrno>
 #include "ift/stdio.hpp"
 
+#ifdef HAVE_FOPEN
 TEST(stdio,fopen)
 {
     fopen_failable_by__(ENOMEM)
@@ -42,7 +44,9 @@ TEST(stdio,fopen)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FDOPEN
 TEST(stdio,fdopen)
 {
     fdopen_failable_by__(ENOMEM)
@@ -53,7 +57,9 @@ TEST(stdio,fdopen)
         close(fd);
     }
 }
+#endif
 
+#ifdef HAVE_FREOPEN
 TEST(stdio,freopen)
 {
     FILE* fp = std::tmpfile();
@@ -64,7 +70,9 @@ TEST(stdio,freopen)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_FCLOSE
 TEST(stdio,fclose)
 {
     FILE* fp = std::tmpfile();
@@ -75,7 +83,9 @@ TEST(stdio,fclose)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_FGETC
 TEST(stdio,fgetc)
 {
     FILE* fp = std::tmpfile();
@@ -85,7 +95,9 @@ TEST(stdio,fgetc)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_FGETS
 TEST(stdio,fgets)
 {
     FILE* fp = std::tmpfile();
@@ -96,7 +108,9 @@ TEST(stdio,fgets)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_GETC
 TEST(stdio,getc)
 {
     FILE* fp = std::tmpfile();
@@ -106,7 +120,9 @@ TEST(stdio,getc)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_GETCHAR
 TEST(stdio,getchar)
 {
     getchar_failable__
@@ -114,7 +130,9 @@ TEST(stdio,getchar)
         ASSERT_EQ(EOF, std::getchar());
     }
 }
+#endif
 
+#ifdef HAVE_GETS
 TEST(stdio,gets)
 {
     gets_failable__
@@ -123,7 +141,9 @@ TEST(stdio,gets)
         ASSERT_EQ(NULL, std::gets(buf));
     }
 }
+#endif
 
+#ifdef HAVE_UNGETC
 TEST(stdio,ungetc)
 {
     FILE* fp = std::tmpfile();
@@ -133,7 +153,9 @@ TEST(stdio,ungetc)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_PRINTF
 TEST(stdio,printf)
 {
     printf_failable__
@@ -141,7 +163,9 @@ TEST(stdio,printf)
         ASSERT_GT(0, std::printf("test\n"));
     }
 }
+#endif
 
+#ifdef HAVE_FPRINTF
 TEST(stdio,fprintf)
 {
     FILE* fp = std::tmpfile();
@@ -151,7 +175,9 @@ TEST(stdio,fprintf)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_SPRINTF
 TEST(stdio,sprintf)
 {
     sprintf_failable__
@@ -160,7 +186,9 @@ TEST(stdio,sprintf)
         ASSERT_GT(0, std::sprintf(buf, "test\n"));
     }
 }
+#endif
 
+#ifdef HAVE_SNPRINTF
 TEST(stdio,snprintf)
 {
     snprintf_failable__
@@ -169,7 +197,9 @@ TEST(stdio,snprintf)
         ASSERT_GT(0, std::snprintf(buf, 2, "test\n"));
     }
 }
+#endif
 
+#ifdef HAVE_FPUTC
 TEST(stdio,fputc)
 {
     FILE* fp = std::tmpfile();
@@ -179,7 +209,9 @@ TEST(stdio,fputc)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_FPUTS
 TEST(stdio,fputs)
 {
     FILE* fp = std::tmpfile();
@@ -189,7 +221,9 @@ TEST(stdio,fputs)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_PUTCHAR
 TEST(stdio,putchar)
 {
     putchar_failable__
@@ -197,7 +231,9 @@ TEST(stdio,putchar)
         ASSERT_EQ(EOF, std::putchar(10));
     }
 }
+#endif
 
+#ifdef HAVE_PUTS
 TEST(stdio,puts)
 {
     puts_failable__
@@ -205,7 +241,9 @@ TEST(stdio,puts)
         ASSERT_EQ(EOF, std::puts("test"));
     }
 }
+#endif
 
+#ifdef HAVE_FREAD
 TEST(stdio,fread)
 {
     FILE* fp = std::tmpfile();
@@ -216,7 +254,9 @@ TEST(stdio,fread)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_FWRITE
 TEST(stdio,fwrite)
 {
     FILE* fp = std::tmpfile();
@@ -227,7 +267,9 @@ TEST(stdio,fwrite)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_SCANF
 TEST(stdio,scanf)
 {
     scanf_failable_by__(ERANGE)
@@ -237,7 +279,9 @@ TEST(stdio,scanf)
         ASSERT_EQ(ERANGE, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FSCANF
 TEST(stdio,fscanf)
 {
     FILE* fp = std::tmpfile();
@@ -249,7 +293,9 @@ TEST(stdio,fscanf)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_SSCANF
 TEST(stdio,sscanf)
 {
     sscanf_failable_by__(ENOMEM)
@@ -259,7 +305,9 @@ TEST(stdio,sscanf)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FSEEK
 TEST(stdio,fseek)
 {
     FILE* fp = std::tmpfile();
@@ -270,7 +318,9 @@ TEST(stdio,fseek)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_FTELL
 TEST(stdio,ftell)
 {
     FILE* fp = std::tmpfile();
@@ -281,7 +331,9 @@ TEST(stdio,ftell)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_FGETPOS
 TEST(stdio,fgetpos)
 {
     FILE* fp = std::tmpfile();
@@ -293,7 +345,9 @@ TEST(stdio,fgetpos)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_FSETPOS
 TEST(stdio,fsetpos)
 {
     FILE* fp = std::tmpfile();
@@ -306,7 +360,9 @@ TEST(stdio,fsetpos)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_REMOVE
 TEST(stdio,remove)
 {
     remove_failable_by__(EACCES)
@@ -315,7 +371,9 @@ TEST(stdio,remove)
         ASSERT_EQ(EACCES, errno);
     }
 }
+#endif
 
+#ifdef HAVE_RENAME
 TEST(stdio,rename)
 {
     rename_failable_by__(EACCES)
@@ -324,7 +382,9 @@ TEST(stdio,rename)
         ASSERT_EQ(EACCES, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETVBUF
 TEST(stdio,setvbuf)
 {
     FILE* fp = std::tmpfile();
@@ -336,7 +396,9 @@ TEST(stdio,setvbuf)
     }
     fclose(fp);
 }
+#endif
 
+#ifdef HAVE_TMPFILE
 TEST(stdio,tmpfile)
 {
     tmpfile_failable_by__(EEXIST)
@@ -345,7 +407,9 @@ TEST(stdio,tmpfile)
         ASSERT_EQ(EEXIST, errno);
     }
 }
+#endif
 
+#ifdef HAVE_TMPNAM
 TEST(stdio,tmpnam)
 {
     tmpnam_failable__
@@ -354,3 +418,4 @@ TEST(stdio,tmpnam)
         ASSERT_EQ(NULL, std::tmpnam(buf));
     }
 }
+#endif

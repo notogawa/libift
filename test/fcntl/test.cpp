@@ -27,11 +27,13 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #include <fcntl.h>
 #include <cerrno>
 #include "ift/fcntl.hpp"
 
+#ifdef HAVE_OPEN
 TEST(fcntl,open)
 {
     open_failable_by__(EACCES)
@@ -45,7 +47,9 @@ TEST(fcntl,open)
         ASSERT_EQ(EEXIST, errno);
     }
 }
+#endif
 
+#ifdef HAVE_CREAT
 TEST(fcntl,creat)
 {
     creat_failable_by__(EFAULT)
@@ -54,3 +58,4 @@ TEST(fcntl,creat)
         ASSERT_EQ(EFAULT, errno);
     }
 }
+#endif

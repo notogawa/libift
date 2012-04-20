@@ -27,11 +27,13 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #include <cstring>
 #include <string>
 #include "ift/string.hpp"
 
+#ifdef HAVE_STRERROR
 TEST(string,strerror)
 {
     strerror_failable__
@@ -40,3 +42,4 @@ TEST(string,strerror)
                   std::string(std::strerror(12)));
     }
 }
+#endif

@@ -27,6 +27,7 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #define _GLIBCXX_USE_C99 1
 #include <cstdarg>
@@ -34,8 +35,8 @@
 #include <cerrno>
 #include "ift/stdarg.hpp"
 
+#ifdef HAVE_VPRINTF
 namespace {
-
 void test_vprintf(int a, ...)
 {
     std::va_list argptr;
@@ -43,7 +44,19 @@ void test_vprintf(int a, ...)
     ASSERT_GT(0, std::vprintf("test\n", argptr));
     va_end(argptr);
 }
+} // anonymous namespace
 
+TEST(stdarg,vprintf)
+{
+    vprintf_failable__
+    {
+        test_vprintf(0);
+    }
+}
+#endif
+
+#ifdef HAVE_VFPRINTF
+namespace {
 void test_vfprintf(int a, ...)
 {
     FILE* fp = std::tmpfile();
@@ -53,7 +66,19 @@ void test_vfprintf(int a, ...)
     va_end(argptr);
     fclose(fp);
 }
+} // anonymous namespace
 
+TEST(stdarg,vfprintf)
+{
+    vfprintf_failable__
+    {
+        test_vfprintf(0);
+    }
+}
+#endif
+
+#ifdef HAVE_VSPRINTF
+namespace {
 void test_vsprintf(int a, ...)
 {
     char buf[1024];
@@ -62,7 +87,19 @@ void test_vsprintf(int a, ...)
     ASSERT_GT(0, std::vsprintf(buf, "test\n", argptr));
     va_end(argptr);
 }
+} // anonymous namespace
 
+TEST(stdarg,vsprintf)
+{
+    vsprintf_failable__
+    {
+        test_vsprintf(0);
+    }
+}
+#endif
+
+#ifdef HAVE_VSNPRINTF
+namespace {
 void test_vsnprintf(int a, ...)
 {
     char buf[1024];
@@ -71,7 +108,19 @@ void test_vsnprintf(int a, ...)
     ASSERT_GT(0, std::vsnprintf(buf, 2, "test\n", argptr));
     va_end(argptr);
 }
+} // anonymous namespace
 
+TEST(stdarg,vsnprintf)
+{
+    vsnprintf_failable__
+    {
+        test_vsnprintf(0);
+    }
+}
+#endif
+
+#ifdef HAVE_VSCANF
+namespace {
 void test_vscanf(int a, ...)
 {
     std::va_list argptr;
@@ -80,7 +129,19 @@ void test_vscanf(int a, ...)
     ASSERT_EQ(ERANGE, errno);
     va_end(argptr);
 }
+} // anonymous namespace
 
+TEST(stdarg,vscanf)
+{
+    vscanf_failable_by__(ERANGE)
+    {
+        test_vscanf(0);
+    }
+}
+#endif
+
+#ifdef HAVE_VFSCANF
+namespace {
 void test_vfscanf(int a, ...)
 {
     FILE* fp = std::tmpfile();
@@ -91,57 +152,7 @@ void test_vfscanf(int a, ...)
     va_end(argptr);
     fclose(fp);
 }
-
-void test_vsscanf(int a, ...)
-{
-    std::va_list argptr;
-    va_start(argptr, a);
-    ASSERT_EQ(EOF, std::vsscanf("12", "%d", argptr));
-    ASSERT_EQ(ENOMEM, errno);
-    va_end(argptr);
-}
-
 } // anonymous namespace
-
-TEST(stdarg,vprintf)
-{
-    vprintf_failable__
-    {
-        test_vprintf(0);
-    }
-}
-
-TEST(stdarg,vfprintf)
-{
-    vfprintf_failable__
-    {
-        test_vfprintf(0);
-    }
-}
-
-TEST(stdarg,vsprintf)
-{
-    vsprintf_failable__
-    {
-        test_vsprintf(0);
-    }
-}
-
-TEST(stdarg,vsnprintf)
-{
-    vsnprintf_failable__
-    {
-        test_vsnprintf(0);
-    }
-}
-
-TEST(stdarg,vscanf)
-{
-    vscanf_failable_by__(ERANGE)
-    {
-        test_vscanf(0);
-    }
-}
 
 TEST(stdarg,vfscanf)
 {
@@ -150,6 +161,19 @@ TEST(stdarg,vfscanf)
         test_vfscanf(0);
     }
 }
+#endif
+
+#ifdef HAVE_VSSCANF
+namespace {
+void test_vsscanf(int a, ...)
+{
+    std::va_list argptr;
+    va_start(argptr, a);
+    ASSERT_EQ(EOF, std::vsscanf("12", "%d", argptr));
+    ASSERT_EQ(ENOMEM, errno);
+    va_end(argptr);
+}
+} // anonymous namespace
 
 TEST(stdarg,vsscanf)
 {
@@ -158,3 +182,4 @@ TEST(stdarg,vsscanf)
         test_vsscanf(0);
     }
 }
+#endif

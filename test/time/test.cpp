@@ -27,11 +27,13 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #include <ctime>
 #include <cerrno>
 #include "ift/time.hpp"
 
+#ifdef HAVE_CLOCK
 TEST(time,clock)
 {
     clock_failable__
@@ -39,7 +41,9 @@ TEST(time,clock)
         ASSERT_EQ(-1, std::clock());
     }
 }
+#endif
 
+#ifdef HAVE_STRFTIME
 TEST(time,strftime)
 {
     strftime_failable__
@@ -49,7 +53,9 @@ TEST(time,strftime)
                                     std::localtime(NULL)));
     }
 }
+#endif
 
+#ifdef HAVE_TIME
 TEST(time,time)
 {
     time_failable__
@@ -58,3 +64,4 @@ TEST(time,time)
         ASSERT_EQ(EFAULT, errno);
     }
 }
+#endif

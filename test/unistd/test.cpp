@@ -27,12 +27,14 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include "config.h"
 #include <gtest/gtest.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <cerrno>
 #include "ift/unistd.hpp"
 
+#ifdef HAVE_ACCESS
 TEST(unistd,access)
 {
     access_failable_by__(EACCES)
@@ -41,7 +43,9 @@ TEST(unistd,access)
         ASSERT_EQ(EACCES, errno);
     }
 }
+#endif
 
+#ifdef HAVE_EUIDACCESS
 TEST(unistd,euidaccess)
 {
     euidaccess_failable_by__(EACCES)
@@ -50,7 +54,9 @@ TEST(unistd,euidaccess)
         ASSERT_EQ(EACCES, errno);
     }
 }
+#endif
 
+#ifdef HAVE_EACCESS
 TEST(unistd,eaccess)
 {
     eaccess_failable_by__(EACCES)
@@ -59,7 +65,9 @@ TEST(unistd,eaccess)
         ASSERT_EQ(EACCES, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FACCESSAT
 TEST(unistd,faccessat)
 {
     int dirfd = open("/tmp", O_RDWR);
@@ -70,7 +78,9 @@ TEST(unistd,faccessat)
     }
     close(dirfd);
 }
+#endif
 
+#ifdef HAVE_LSEEK
 TEST(unistd,lseek)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -81,7 +91,9 @@ TEST(unistd,lseek)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_CLOSE
 TEST(unistd,close)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -92,7 +104,9 @@ TEST(unistd,close)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_READ
 TEST(unistd,read)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -104,7 +118,9 @@ TEST(unistd,read)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_WRITE
 TEST(unistd,write)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -116,7 +132,9 @@ TEST(unistd,write)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_PREAD
 TEST(unistd,pread)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -128,7 +146,9 @@ TEST(unistd,pread)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_PWRITE
 TEST(unistd,pwrite)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -140,7 +160,9 @@ TEST(unistd,pwrite)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_PIPE
 TEST(unistd,pipe)
 {
     pipe_failable_by__(EMFILE)
@@ -150,7 +172,9 @@ TEST(unistd,pipe)
         ASSERT_EQ(EMFILE, errno);
     }
 }
+#endif
 
+#ifdef HAVE_PIPE2
 TEST(unistd,pipe2)
 {
     pipe2_failable_by__(EMFILE)
@@ -160,7 +184,9 @@ TEST(unistd,pipe2)
         ASSERT_EQ(EMFILE, errno);
     }
 }
+#endif
 
+#ifdef HAVE_USLEEP
 TEST(unistd,usleep)
 {
     usleep_failable_by__(EINTR)
@@ -169,7 +195,9 @@ TEST(unistd,usleep)
         ASSERT_EQ(EINTR, errno);
     }
 }
+#endif
 
+#ifdef HAVE_PAUSE
 TEST(unistd,pause)
 {
     pause_failable__
@@ -178,7 +206,9 @@ TEST(unistd,pause)
         ASSERT_EQ(EINTR, errno);
     }
 }
+#endif
 
+#ifdef HAVE_CHOWN
 TEST(unistd,chown)
 {
     chown_failable_by__(ENOENT)
@@ -187,7 +217,9 @@ TEST(unistd,chown)
         ASSERT_EQ(ENOENT, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FCHOWN
 TEST(unistd,fchown)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -198,7 +230,9 @@ TEST(unistd,fchown)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_LCHOWN
 TEST(unistd,lchown)
 {
     lchown_failable_by__(ENOENT)
@@ -207,7 +241,9 @@ TEST(unistd,lchown)
         ASSERT_EQ(ENOENT, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FCHOWNAT
 TEST(unistd,fchownat)
 {
     int dirfd = open("/tmp", O_RDWR);
@@ -218,7 +254,9 @@ TEST(unistd,fchownat)
     }
     close(dirfd);
 }
+#endif
 
+#ifdef HAVE_CHDIR
 TEST(unistd,chdir)
 {
     chdir_failable_by__(EIO)
@@ -227,7 +265,9 @@ TEST(unistd,chdir)
         ASSERT_EQ(EIO, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FCHDIR
 TEST(unistd,fchdir)
 {
     int dirfd = open("/tmp", O_RDWR);
@@ -238,7 +278,9 @@ TEST(unistd,fchdir)
     }
     close(dirfd);
 }
+#endif
 
+#ifdef HAVE_GETCWD
 TEST(unistd,getcwd)
 {
     getcwd_failable_by__(EACCES)
@@ -248,7 +290,9 @@ TEST(unistd,getcwd)
         ASSERT_EQ(EACCES, errno);
     }
 }
+#endif
 
+#ifdef HAVE_GET_CURRENT_DIR_NAME
 TEST(unistd,get_current_dir_name)
 {
     get_current_dir_name_failable_by__(ENOMEM)
@@ -257,7 +301,9 @@ TEST(unistd,get_current_dir_name)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_DUP
 TEST(unistd,dup)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -268,7 +314,9 @@ TEST(unistd,dup)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_DUP2
 TEST(unistd,dup2)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -280,7 +328,9 @@ TEST(unistd,dup2)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_DUP3
 TEST(unistd,dup3)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -292,7 +342,9 @@ TEST(unistd,dup3)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_EXECVE
 TEST(unistd,execve)
 {
     execve_failable_by__(E2BIG)
@@ -303,7 +355,9 @@ TEST(unistd,execve)
         ASSERT_EQ(E2BIG, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FEXECVE
 TEST(unistd,fexecve)
 {
     int fd = open("/bin/ls", O_RDONLY);
@@ -316,7 +370,9 @@ TEST(unistd,fexecve)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_EXECV
 TEST(unistd,execv)
 {
     execv_failable_by__(E2BIG)
@@ -326,7 +382,9 @@ TEST(unistd,execv)
         ASSERT_EQ(E2BIG, errno);
     }
 }
+#endif
 
+#ifdef HAVE_EXECVP
 TEST(unistd,execvp)
 {
     execvp_failable_by__(E2BIG)
@@ -336,7 +394,9 @@ TEST(unistd,execvp)
         ASSERT_EQ(E2BIG, errno);
     }
 }
+#endif
 
+#ifdef HAVE_EXECVPE
 TEST(unistd,execvpe)
 {
     execvpe_failable_by__(E2BIG)
@@ -347,7 +407,9 @@ TEST(unistd,execvpe)
         ASSERT_EQ(E2BIG, errno);
     }
 }
+#endif
 
+#ifdef HAVE_NICE
 TEST(unistd,nice)
 {
     nice_failable__
@@ -356,7 +418,9 @@ TEST(unistd,nice)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_PATHCONF
 TEST(unistd,pathconf)
 {
     pathconf_failable_by__(EPERM)
@@ -365,7 +429,9 @@ TEST(unistd,pathconf)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FPATHCONF
 TEST(unistd,fpathconf)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -376,7 +442,9 @@ TEST(unistd,fpathconf)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_SYSCONF
 TEST(unistd,sysconf)
 {
     sysconf_failable__
@@ -385,7 +453,9 @@ TEST(unistd,sysconf)
         ASSERT_EQ(EINVAL, errno);
     }
 }
+#endif
 
+#ifdef HAVE_GETPGID
 TEST(unistd,getpgid)
 {
     getpgid_failable_by__(ESRCH)
@@ -394,7 +464,9 @@ TEST(unistd,getpgid)
         ASSERT_EQ(ESRCH, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETPGID
 TEST(unistd,setpgid)
 {
     setpgid_failable_by__(EACCES)
@@ -403,7 +475,9 @@ TEST(unistd,setpgid)
         ASSERT_EQ(EACCES, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETPGRP
 TEST(unistd,setpgrp)
 {
     setpgrp_failable_by__(EACCES)
@@ -412,7 +486,9 @@ TEST(unistd,setpgrp)
         ASSERT_EQ(EACCES, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETSID
 TEST(unistd,setsid)
 {
     setsid_failable__
@@ -421,7 +497,9 @@ TEST(unistd,setsid)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_GETSID
 TEST(unistd,getsid)
 {
     getsid_failable_by__(ESRCH)
@@ -430,7 +508,9 @@ TEST(unistd,getsid)
         ASSERT_EQ(ESRCH, errno);
     }
 }
+#endif
 
+#ifdef HAVE_GETGROUPS
 TEST(unistd,getgroups)
 {
     getgroups_failable_by__(EFAULT)
@@ -440,7 +520,9 @@ TEST(unistd,getgroups)
         ASSERT_EQ(EFAULT, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETUID
 TEST(unistd,setuid)
 {
     setuid_failable_by__(EAGAIN)
@@ -449,7 +531,9 @@ TEST(unistd,setuid)
         ASSERT_EQ(EAGAIN, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETREUID
 TEST(unistd,setreuid)
 {
     setreuid_failable__
@@ -458,7 +542,9 @@ TEST(unistd,setreuid)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETEUID
 TEST(unistd,seteuid)
 {
     seteuid_failable__
@@ -467,7 +553,9 @@ TEST(unistd,seteuid)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETGID
 TEST(unistd,setgid)
 {
     setgid_failable__
@@ -476,7 +564,9 @@ TEST(unistd,setgid)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETREGID
 TEST(unistd,setregid)
 {
     setregid_failable__
@@ -485,7 +575,9 @@ TEST(unistd,setregid)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETEGID
 TEST(unistd,setegid)
 {
     setegid_failable__
@@ -494,7 +586,9 @@ TEST(unistd,setegid)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_GETRESUID
 TEST(unistd,getresuid)
 {
     getresuid_failable__
@@ -504,7 +598,9 @@ TEST(unistd,getresuid)
         ASSERT_EQ(EFAULT, errno);
     }
 }
+#endif
 
+#ifdef HAVE_GETRESGID
 TEST(unistd,getresgid)
 {
     getresgid_failable__
@@ -514,7 +610,9 @@ TEST(unistd,getresgid)
         ASSERT_EQ(EFAULT, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETRESUID
 TEST(unistd,setresuid)
 {
     setresuid_failable_by__(EPERM)
@@ -524,7 +622,9 @@ TEST(unistd,setresuid)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETRESGID
 TEST(unistd,setresgid)
 {
     setresgid_failable_by__(EPERM)
@@ -534,7 +634,9 @@ TEST(unistd,setresgid)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FORK
 TEST(unistd,fork)
 {
     fork_failable_by__(ENOMEM)
@@ -543,7 +645,9 @@ TEST(unistd,fork)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_TTYNAME
 TEST(unistd,ttyname)
 {
     int fd = open("/dev/tty", O_RDWR);
@@ -554,7 +658,9 @@ TEST(unistd,ttyname)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_TTYNAME_R
 TEST(unistd,ttyname_r)
 {
     int fd = open("/dev/tty", O_RDWR);
@@ -565,7 +671,9 @@ TEST(unistd,ttyname_r)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_ISATTY
 TEST(unistd,isatty)
 {
     int fd = open("/dev/tty", O_RDWR);
@@ -576,7 +684,9 @@ TEST(unistd,isatty)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_LINK
 TEST(unistd,link)
 {
     link_failable_by__(EIO)
@@ -585,7 +695,9 @@ TEST(unistd,link)
         ASSERT_EQ(EIO, errno);
     }
 }
+#endif
 
+#ifdef HAVE_LINKAT
 TEST(unistd,linkat)
 {
     int dirfd = open("/tmp", O_RDWR);
@@ -597,7 +709,9 @@ TEST(unistd,linkat)
     }
     close(dirfd);
 }
+#endif
 
+#ifdef HAVE_SYMLINK
 TEST(unistd,symlink)
 {
     symlink_failable_by__(EIO)
@@ -606,7 +720,9 @@ TEST(unistd,symlink)
         ASSERT_EQ(EIO, errno);
     }
 }
+#endif
 
+#ifdef HAVE_READLINK
 TEST(unistd,readlink)
 {
     readlink_failable_by__(EIO)
@@ -616,7 +732,9 @@ TEST(unistd,readlink)
         ASSERT_EQ(EIO, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SYMLINKAT
 TEST(unistd,symlinkat)
 {
     int dirfd = open("/tmp", O_RDWR);
@@ -627,7 +745,9 @@ TEST(unistd,symlinkat)
     }
     close(dirfd);
 }
+#endif
 
+#ifdef HAVE_READLINKAT
 TEST(unistd,readlinkat)
 {
     int dirfd = open("/tmp", O_RDWR);
@@ -640,7 +760,9 @@ TEST(unistd,readlinkat)
     }
     close(dirfd);
 }
+#endif
 
+#ifdef HAVE_UNLINK
 TEST(unistd,unlink)
 {
     unlink_failable_by__(EIO)
@@ -649,7 +771,9 @@ TEST(unistd,unlink)
         ASSERT_EQ(EIO, errno);
     }
 }
+#endif
 
+#ifdef HAVE_UNLINKAT
 TEST(unistd,unlinkat)
 {
     int dirfd = open("/tmp", O_RDWR);
@@ -660,7 +784,9 @@ TEST(unistd,unlinkat)
     }
     close(dirfd);
 }
+#endif
 
+#ifdef HAVE_RMDIR
 TEST(unistd,rmdir)
 {
     rmdir_failable_by__(EBUSY)
@@ -669,7 +795,9 @@ TEST(unistd,rmdir)
         ASSERT_EQ(EBUSY, errno);
     }
 }
+#endif
 
+#ifdef HAVE_TCGETPGRP
 TEST(unistd,tcgetpgrp)
 {
     int fd = open("/dev/tty", O_RDWR);
@@ -680,7 +808,9 @@ TEST(unistd,tcgetpgrp)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_TCSETPGRP
 TEST(unistd,tcsetpgrp)
 {
     int fd = open("/dev/tty", O_RDWR);
@@ -691,7 +821,9 @@ TEST(unistd,tcsetpgrp)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_GETLOGIN
 TEST(unistd,getlogin)
 {
     getlogin_failable_by__(EMFILE)
@@ -700,7 +832,9 @@ TEST(unistd,getlogin)
         ASSERT_EQ(EMFILE, errno);
     }
 }
+#endif
 
+#ifdef HAVE_GETLOGIN_R
 TEST(unistd,getlogin_r)
 {
     getlogin_r_failable_by__(EMFILE)
@@ -709,7 +843,9 @@ TEST(unistd,getlogin_r)
         ASSERT_EQ(EMFILE, getlogin_r(buf, sizeof(buf)/sizeof(buf[0])));
     }
 }
+#endif
 
+#ifdef HAVE_GETHOSTNAME
 TEST(unistd,gethostname)
 {
     gethostname_failable_by__(EPERM)
@@ -719,7 +855,9 @@ TEST(unistd,gethostname)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETHOSTNAME
 TEST(unistd,sethostname)
 {
     sethostname_failable_by__(EPERM)
@@ -729,7 +867,9 @@ TEST(unistd,sethostname)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETHOSTID
 TEST(unistd,sethostid)
 {
     sethostid_failable_by__(EPERM)
@@ -738,7 +878,9 @@ TEST(unistd,sethostid)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_GETDOMAINNAME
 TEST(unistd,getdomainname)
 {
     getdomainname_failable_by__(EPERM)
@@ -748,7 +890,9 @@ TEST(unistd,getdomainname)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SETDOMAINNAME
 TEST(unistd,setdomainname)
 {
     setdomainname_failable_by__(EPERM)
@@ -758,7 +902,9 @@ TEST(unistd,setdomainname)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_VHANGUP
 TEST(unistd,vhangup)
 {
     vhangup_failable__
@@ -767,7 +913,9 @@ TEST(unistd,vhangup)
         ASSERT_EQ(EPERM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_ACCT
 TEST(unistd,acct)
 {
     acct_failable_by__(EIO)
@@ -776,7 +924,9 @@ TEST(unistd,acct)
         ASSERT_EQ(EIO, errno);
     }
 }
+#endif
 
+#ifdef HAVE_DAEMON
 TEST(unistd,daemon)
 {
     daemon_failable_by__(ENOMEM)
@@ -785,7 +935,9 @@ TEST(unistd,daemon)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_CHROOT
 TEST(unistd,chroot)
 {
     chroot_failable_by__(ENOMEM)
@@ -794,7 +946,9 @@ TEST(unistd,chroot)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_GETPASS
 TEST(unistd,getpass)
 {
     getpass_failable__
@@ -803,7 +957,9 @@ TEST(unistd,getpass)
         ASSERT_EQ(ENXIO, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FSYNC
 TEST(unistd,fsync)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -814,7 +970,9 @@ TEST(unistd,fsync)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_SYNCFS
 TEST(unistd,syncfs)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -825,7 +983,9 @@ TEST(unistd,syncfs)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_TRUNCATE
 TEST(unistd,truncate)
 {
     truncate_failable_by__(ENOENT)
@@ -834,7 +994,9 @@ TEST(unistd,truncate)
         ASSERT_EQ(ENOENT, errno);
     }
 }
+#endif
 
+#ifdef HAVE_FTRUNCATE
 TEST(unistd,ftruncate)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -845,7 +1007,9 @@ TEST(unistd,ftruncate)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_BRK
 TEST(unistd,brk)
 {
     brk_failable__
@@ -854,7 +1018,9 @@ TEST(unistd,brk)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_SBRK
 TEST(unistd,sbrk)
 {
     sbrk_failable__
@@ -864,7 +1030,9 @@ TEST(unistd,sbrk)
         ASSERT_EQ(ENOMEM, errno);
     }
 }
+#endif
 
+#ifdef HAVE_LOCKF
 TEST(unistd,lockf)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -875,7 +1043,9 @@ TEST(unistd,lockf)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_FDATASYNC
 TEST(unistd,fdatasync)
 {
     int fd = open("/tmp/test", O_RDWR);
@@ -886,7 +1056,9 @@ TEST(unistd,fdatasync)
     }
     close(fd);
 }
+#endif
 
+#ifdef HAVE_CRYPT
 TEST(unistd,crypt)
 {
     crypt_failable__
@@ -895,4 +1067,4 @@ TEST(unistd,crypt)
         ASSERT_EQ(ENOSYS, errno);
     }
 }
-
+#endif

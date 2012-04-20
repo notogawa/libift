@@ -31,9 +31,14 @@ AC_PROG_LIBTOOL
 
 # Checks for libraries.
 AX_PTHREAD
+AC_CHECK_LIB([dl], [dlsym], [], [AC_MSG_ERROR("missing -ldl")])
+AC_CHECK_LIB([crypt], [crypt])
+AC_CHECK_LIB([crypt], [crypt], [CRYPT_LIBS=-lcrypt], [CRYPT_LIBS=])
+AC_SUBST(CRYPT_LIBS)
 
 # Checks for header files.
-AC_CHECK_HEADERS([arpa/inet.h fcntl.h netinet/in.h stdlib.h string.h sys/socket.h unistd.h])
+AC_CHECK_HEADERS([arpa/inet.h fcntl.h netinet/in.h stdlib.h string.h \
+                  sys/socket.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL
@@ -47,13 +52,51 @@ AC_TYPE_SSIZE_T
 AX_TLS([],AC_MSG_ERROR([$CC does not support Thread Local Storage]))
 
 # Checks for library functions.
-AC_FUNC_CHOWN
 AC_FUNC_ERROR_AT_LINE
-AC_FUNC_FORK
-AC_FUNC_GETGROUPS
+# fcntl.h
+AC_CHECK_FUNCS([open creat])
+# signal.h
+AC_CHECK_FUNCS([signal])
+# stdarg.h
+AC_CHECK_FUNCS([vprintf vfprintf vsprintf vsnprintf vscanf vfscanf vsscanf])
+# stdio.h
+AC_CHECK_FUNCS([fopen fdopen freopen fclose fgetc fgets getc getchar gets \
+                ungetc printf fprintf sprintf snprintf fputc fputs putchar \
+                puts fread fwrite scanf fscanf sscanf fseek ftell fgetpos \
+                fsetpos remove rename setvbuf tmpfile tmpnam])
+# stdlib.h
 AC_FUNC_MALLOC
 AC_FUNC_REALLOC
-AC_CHECK_FUNCS([dup2 euidaccess fchdir fdatasync ftruncate getcwd gethostname getpass lchown pathconf rmdir select sethostname socket strerror])
+AX_FUNC_POSIX_MEMALIGN
+AC_CHECK_FUNCS([calloc getenv system])
+# string.h
+AC_CHECK_FUNCS([strerror])
+# sys/epoll.h
+AC_CHECK_FUNCS([epoll_create epoll_create1 epoll_ctl epoll_wait epoll_pwait])
+# sys/select.h
+AC_CHECK_FUNCS([select pselect])
+# sys/socket.h
+AC_CHECK_FUNCS([socket socketpair bind getsockname connect getpeername send \
+                recv sendto recvfrom sendmsg recvmsg getsockopt setsockopt \
+                listen accept accept4 shutdown sockatmark isfdtype])
+# time.h
+AC_CHECK_FUNCS([clock strftime time])
+# unistd.h
+AC_FUNC_CHOWN
+AC_FUNC_FORK
+AC_FUNC_GETGROUPS
+AC_CHECK_FUNCS([access euidaccess eaccess faccessat lseek close read write \
+                pread pwrite pipe pipe2 usleep pause fchown lchown fchownat \
+                chdir fchdir getcwd get_current_dir_name dup dup2 dup3 execve \
+                fexecve execv execvp execvpe nice pathconf fpathconf sysconf \
+                getpgid setpgid setpgrp setsid getsid setuid setreuid seteuid \
+                setgid setregid setegid getresuid getresgid setresuid \
+                setresgid ttyname ttyname_r isatty link linkat symlink \
+                readlink symlinkat readlinkat unlink unlinkat rmdir \
+                tcgetpgrp tcsetpgrp getlogin getlogin_r gethostname \
+                sethostname sethostid getdomainname setdomainname vhangup acct \
+                daemon chroot getpass fsync syncfs truncate ftruncate brk sbrk \
+                lockf fdatasync crypt])
 
 # Treat warnings as errors
 AM_CFLAGS="-Wall -Wextra -Werror -ansi -pedantic -fno-inline"
