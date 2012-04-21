@@ -27,7 +27,8 @@
 // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#include <sys/epoll.h>
+#include <config.h>
+#include <sys/select.h>
 #include "basic_impl.hpp"
 IFT_BASIC_IMPL(int, select,
                (int, fd_set*, fd_set*, fd_set*, struct timeval*), -1,

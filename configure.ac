@@ -65,10 +65,8 @@ AC_CHECK_FUNCS([fopen fdopen freopen fclose fgetc fgets getc getchar gets \
                 puts fread fwrite scanf fscanf sscanf fseek ftell fgetpos \
                 fsetpos remove rename setvbuf tmpfile tmpnam])
 # stdlib.h
-AC_FUNC_MALLOC
-AC_FUNC_REALLOC
 AX_FUNC_POSIX_MEMALIGN
-AC_CHECK_FUNCS([calloc getenv system])
+AC_CHECK_FUNCS([malloc calloc realloc getenv system])
 # string.h
 AC_CHECK_FUNCS([strerror])
 # sys/epoll.h
@@ -82,21 +80,18 @@ AC_CHECK_FUNCS([socket socketpair bind getsockname connect getpeername send \
 # time.h
 AC_CHECK_FUNCS([clock strftime time])
 # unistd.h
-AC_FUNC_CHOWN
-AC_FUNC_FORK
-AC_FUNC_GETGROUPS
 AC_CHECK_FUNCS([access euidaccess eaccess faccessat lseek close read write \
-                pread pwrite pipe pipe2 usleep pause fchown lchown fchownat \
-                chdir fchdir getcwd get_current_dir_name dup dup2 dup3 execve \
-                fexecve execv execvp execvpe nice pathconf fpathconf sysconf \
-                getpgid setpgid setpgrp setsid getsid setuid setreuid seteuid \
-                setgid setregid setegid getresuid getresgid setresuid \
-                setresgid ttyname ttyname_r isatty link linkat symlink \
-                readlink symlinkat readlinkat unlink unlinkat rmdir \
-                tcgetpgrp tcsetpgrp getlogin getlogin_r gethostname \
-                sethostname sethostid getdomainname setdomainname vhangup acct \
-                daemon chroot getpass fsync syncfs truncate ftruncate brk sbrk \
-                lockf fdatasync])
+                pread pwrite pipe pipe2 usleep pause chown fchown lchown \
+                fchownat chdir fchdir getcwd get_current_dir_name dup dup2 \
+                dup3 execve fexecve execv execvp execvpe nice pathconf \
+                fpathconf sysconf getpgid setpgid setpgrp setsid getsid \
+                getgroups setuid setreuid seteuid setgid setregid setegid \
+                getresuid getresgid setresuid setresgid fork ttyname ttyname_r \
+                isatty link linkat symlink readlink symlinkat readlinkat \
+                unlink unlinkat rmdir tcgetpgrp tcsetpgrp getlogin getlogin_r \
+                gethostname sethostname sethostid getdomainname setdomainname \
+                vhangup acct daemon chroot getpass fsync syncfs truncate \
+                ftruncate brk sbrk lockf fdatasync])
 AC_CHECK_FUNCS([crypt],
                [AC_DEFINE_UNQUOTED(HAVE_CRYPT, 1)],
                [AC_CHECK_LIB([crypt], [crypt],
