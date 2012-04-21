@@ -31,10 +31,10 @@ AC_PROG_LIBTOOL
 
 # Checks for libraries.
 AX_PTHREAD
-AC_CHECK_LIB([dl], [dlsym], [], [AC_MSG_ERROR("missing -ldl")])
-AC_CHECK_LIB([crypt], [crypt])
-AC_CHECK_LIB([crypt], [crypt], [CRYPT_LIBS=-lcrypt], [CRYPT_LIBS=])
-AC_SUBST(CRYPT_LIBS)
+AC_CHECK_LIB([dl], [dlsym],
+             [DL_LIBS=-ldl
+              AC_SUBST(DL_LIBS)],
+             [AC_MSG_ERROR("missing -ldl")])
 
 # Checks for header files.
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h netinet/in.h stdlib.h string.h \
@@ -96,7 +96,15 @@ AC_CHECK_FUNCS([access euidaccess eaccess faccessat lseek close read write \
                 tcgetpgrp tcsetpgrp getlogin getlogin_r gethostname \
                 sethostname sethostid getdomainname setdomainname vhangup acct \
                 daemon chroot getpass fsync syncfs truncate ftruncate brk sbrk \
-                lockf fdatasync crypt])
+                lockf fdatasync])
+AC_CHECK_FUNCS([crypt],
+               [AC_DEFINE_UNQUOTED(HAVE_CRYPT, 1)],
+               [AC_CHECK_LIB([crypt], [crypt],
+                             [AC_DEFINE_UNQUOTED(HAVE_CRYPT, 1)
+                              CRYPT_LIBS=-lcrypt
+                              AC_SUBST(CRYPT_LIBS)],
+                             [CRYPT_LIBS=
+                              AC_SUBST(CRYPT_LIBS)])])
 
 # Treat warnings as errors
 AM_CFLAGS="-Wall -Wextra -Werror -ansi -pedantic -fno-inline"

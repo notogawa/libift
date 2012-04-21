@@ -19,7 +19,7 @@ libift_la_SOURCES=\
 incremental_failable.cpp
 
 libift_la_LDFLAGS=\
--ldl \
+@DL_LIBS@ \
 -version-info 0:0:0
 
 noinst_HEADERS=\
@@ -33,7 +33,7 @@ scoped_global_lock.cpp \
 libift_preload.cpp
 
 libift_preload_la_LDFLAGS=\
--ldl \
+@DL_LIBS@ \
 -version-info 0:0:0 \
 -shared
 
