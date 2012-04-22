@@ -103,27 +103,72 @@ AC_CHECK_FUNCS([crypt],
 
 # Treat warnings as errors
 AM_CFLAGS="-Wall -Wextra -Werror -ansi -pedantic -fno-inline"
-AM_CXXFLAGS="-Wall -Wextra -Werror -pedantic -fno-inline"
+AM_CXXFLAGS="-Wall -Wextra -Werror -ansi -pedantic -fno-inline"
 
 # Check for -Wno-error=unused-parameter
-AX_GCC_OPTION([-Wno-error=unused-parameter],[],[],
-              [AM_CFLAGS="${AM_CFLAGS} -Wno-error=unused-parameter"
-               AM_CXXFLAGS="${AM_CXXFLAGS} -Wno-error=unused-parameter"],
-              [AM_CFLAGS="${AM_CFLAGS} -Wno-unused-parameter"
-               AM_CXXFLAGS="${AM_CXXFLAGS} -Wno-unused-parameter"])
-AX_GCC_OPTION([-Wno-error=long-long],[],[],
-              [NO_ERROR_LONG_LONG_CFLAGS="-Wno-error=long-long"
-               NO_ERROR_LONG_LONG_CXXFLAGS="-Wno-error=long-long"],
-              [NO_ERROR_LONG_LONG_CFLAGS="-Wno-long-long"
-               NO_ERROR_LONG_LONG_CXXFLAGS="-Wno-long-long"])
+AX_GCC_OPTION([-Wno-error=unused-parameter],
+              [${AM_CFLAGS}],[
+int main(int argc, char* argv[])
+{
+    return 0;
+}
+],
+              [AM_CFLAGS="${AM_CFLAGS} -Wno-error=unused-parameter"],
+              [AM_CFLAGS="${AM_CFLAGS} -Wno-unused-parameter"])
+AX_GCC_OPTION([-Wno-error=unused-parameter],
+              [-x c++ ${AM_CXXFLAGS}],[
+int main(int argc, char* argv[])
+{
+    return 0;
+}
+],
+              [AM_CXXFLAGS="${AM_CXXFLAGS} -Wno-error=unused-parameter"],
+              [AM_CXXFLAGS="${AM_CXXFLAGS} -Wno-unused-parameter"])
+
+AX_GCC_OPTION([-Wno-error=long-long],
+              [${AM_CFLAGS}],[
+int main()
+{
+    long long _;
+    return 0;
+}
+],
+              [NO_ERROR_LONG_LONG_CFLAGS="-Wno-error=long-long"],
+              [NO_ERROR_LONG_LONG_CFLAGS="-Wno-long-long"])
 AC_SUBST(NO_ERROR_LONG_LONG_CFLAGS)
+AX_GCC_OPTION([-Wno-error=long-long],
+              [-x c++ ${AM_CXXFLAGS}],[
+int main()
+{
+    long long _;
+    return 0;
+}
+],
+              [NO_ERROR_LONG_LONG_CXXFLAGS="-Wno-error=long-long"],
+              [NO_ERROR_LONG_LONG_CXXFLAGS="-Wno-long-long"])
 AC_SUBST(NO_ERROR_LONG_LONG_CXXFLAGS)
-AX_GCC_OPTION([-Wno-error=variadic-macros],[],[],
-              [NO_ERROR_VARIADIC_MACROS_CFLAGS="-Wno-error=variadic-macros"
-               NO_ERROR_VARIADIC_MACROS_CXXFLAGS="-Wno-error=variadic-macros"],
-              [NO_ERROR_VARIADIC_MACROS_CFLAGS="-Wno-variadic-macros"
-               NO_ERROR_VARIADIC_MACROS_CXXFLAGS="-Wno-variadic-macros"])
+
+AX_GCC_OPTION([-Wno-error=variadic-macros],
+              [${AM_CFLAGS}],[
+#define X(...)
+int main()
+{
+    return 0;
+}
+],
+              [NO_ERROR_VARIADIC_MACROS_CFLAGS="-Wno-error=variadic-macros"],
+              [NO_ERROR_VARIADIC_MACROS_CFLAGS="-Wno-variadic-macros"])
 AC_SUBST(NO_ERROR_VARIADIC_MACROS_CFLAGS)
+AX_GCC_OPTION([-Wno-error=variadic-macros],
+              [-x c++ ${AM_CXXFLAGS}],[
+#define X(...)
+int main()
+{
+    return 0;
+}
+],
+              [NO_ERROR_VARIADIC_MACROS_CXXFLAGS="-Wno-error=variadic-macros"],
+              [NO_ERROR_VARIADIC_MACROS_CXXFLAGS="-Wno-variadic-macros"])
 AC_SUBST(NO_ERROR_VARIADIC_MACROS_CXXFLAGS)
 
 AC_SUBST(AM_CPPFLAGS)
