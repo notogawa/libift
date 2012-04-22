@@ -18,13 +18,15 @@ sample_test_CFLAGS=\
 $(AM_CFLAGS) \
 @PTHREAD_CFLAGS@ \
 -fno-builtin -O0 \
--Wno-long-long -Wno-variadic-macros
+@NO_ERROR_LONG_LONG_CFLAGS@ \
+@NO_ERROR_VARIADIC_MACROS_CFLAGS@
 
 sample_test_CXXFLAGS=\
 $(AM_CXXFLAGS) \
 @PTHREAD_CFLAGS@ \
 -fno-builtin -O0 \
--Wno-long-long -Wno-variadic-macros
+@NO_ERROR_LONG_LONG_CXXFLAGS@ \
+@NO_ERROR_VARIADIC_MACROS_CXXFLAGS@
 
 sample_test_LDFLAGS=\
 -no-install \

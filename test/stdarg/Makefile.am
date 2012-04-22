@@ -13,4 +13,5 @@ lib_la_CXXFLAGS=\
 $(AM_CXXFLAGS) \
 @PTHREAD_CFLAGS@ \
 -fno-builtin -O0 \
--Wno-long-long -Wno-variadic-macros
+@NO_ERROR_LONG_LONG_CXXFLAGS@ \
+@NO_ERROR_VARIADIC_MACROS_CXXFLAGS@

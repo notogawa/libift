@@ -106,23 +106,25 @@ AM_CFLAGS="-Wall -Wextra -Werror -ansi -pedantic -fno-inline"
 AM_CXXFLAGS="-Wall -Wextra -Werror -pedantic -fno-inline"
 
 # Check for -Wno-error=unused-parameter
-AC_CACHE_CHECK([for gcc -Wno-error=unused-parameter support],
-               ac_cv_c_gcc_no_error_unused_parameter,
-               ac_cv_c_gcc_no_error_unused_parameter="undefined")
-if test "x$ac_cv_c_gcc_no_error_unused_parameter" = "xundefined"
-then
-  AX_GCC_OPTION([-Wno-error=unused-parameter],[],[],
-                ac_cv_c_gcc_no_error_unused_parameter="yes",
-                ac_cv_c_gcc_no_error_unused_parameter="no")
-fi
-if test "x$ac_cv_c_gcc_no_error_unused_parameter" = "xyes"
-then
-  AM_CFLAGS="${AM_CFLAGS} -Wno-error=unused-parameter"
-  AM_CXXFLAGS="${AM_CXXFLAGS} -Wno-error=unused-parameter"
-else
-  AM_CFLAGS="${AM_CFLAGS} -Wno-unused-parameter"
-  AM_CXXFLAGS="${AM_CXXFLAGS} -Wno-unused-parameter"
-fi
+AX_GCC_OPTION([-Wno-error=unused-parameter],[],[],
+              [AM_CFLAGS="${AM_CFLAGS} -Wno-error=unused-parameter"
+               AM_CXXFLAGS="${AM_CXXFLAGS} -Wno-error=unused-parameter"],
+              [AM_CFLAGS="${AM_CFLAGS} -Wno-unused-parameter"
+               AM_CXXFLAGS="${AM_CXXFLAGS} -Wno-unused-parameter"])
+AX_GCC_OPTION([-Wno-error=long-long],[],[],
+              [NO_ERROR_LONG_LONG_CFLAGS="-Wno-error=long-long"
+               NO_ERROR_LONG_LONG_CXXFLAGS="-Wno-error=long-long"],
+              [NO_ERROR_LONG_LONG_CFLAGS="-Wno-long-long"
+               NO_ERROR_LONG_LONG_CXXFLAGS="-Wno-long-long"])
+AC_SUBST(NO_ERROR_LONG_LONG_CFLAGS)
+AC_SUBST(NO_ERROR_LONG_LONG_CXXFLAGS)
+AX_GCC_OPTION([-Wno-error=variadic-macros],[],[],
+              [NO_ERROR_VARIADIC_MACROS_CFLAGS="-Wno-error=variadic-macros"
+               NO_ERROR_VARIADIC_MACROS_CXXFLAGS="-Wno-error=variadic-macros"],
+              [NO_ERROR_VARIADIC_MACROS_CFLAGS="-Wno-variadic-macros"
+               NO_ERROR_VARIADIC_MACROS_CXXFLAGS="-Wno-variadic-macros"])
+AC_SUBST(NO_ERROR_VARIADIC_MACROS_CFLAGS)
+AC_SUBST(NO_ERROR_VARIADIC_MACROS_CXXFLAGS)
 
 AC_SUBST(AM_CPPFLAGS)
 AC_SUBST(AM_CFLAGS)
