@@ -1,5 +1,5 @@
-#                                               -*- Autoconf -*-
-# Process this file with autoconf to produce a configure script.
+B#                                               -*- Autoconf -*-
+#0;95;c Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
 AC_INIT([libift], [0.1], [n.ohkawa@gmail.com],
@@ -108,7 +108,7 @@ AM_CXXFLAGS="-Wall -Wextra -Werror -ansi -pedantic -fno-inline"
 # Check for -Wno-error=unused-parameter
 AX_GCC_OPTION([-Wno-error=unused-parameter],
               [${AM_CFLAGS}],[
-int main(int argc, char* argv[])
+int main(int argc, char** argv)
 {
     return 0;
 }
@@ -117,7 +117,7 @@ int main(int argc, char* argv[])
               [AM_CFLAGS="${AM_CFLAGS} -Wno-unused-parameter"])
 AX_GCC_OPTION([-Wno-error=unused-parameter],
               [-x c++ ${AM_CXXFLAGS}],[
-int main(int argc, char* argv[])
+int main(int argc, char** argv)
 {
     return 0;
 }
@@ -130,6 +130,7 @@ AX_GCC_OPTION([-Wno-error=long-long],
 int main()
 {
     long long _;
+    _ = 0;
     return 0;
 }
 ],
@@ -141,6 +142,7 @@ AX_GCC_OPTION([-Wno-error=long-long],
 int main()
 {
     long long _;
+    _ = 0;
     return 0;
 }
 ],
@@ -150,7 +152,7 @@ AC_SUBST(NO_ERROR_LONG_LONG_CXXFLAGS)
 
 AX_GCC_OPTION([-Wno-error=variadic-macros],
               [${AM_CFLAGS}],[
-#define X(...)
+#define X(...) __VA_ARGS__
 int main()
 {
     return 0;
@@ -161,7 +163,7 @@ int main()
 AC_SUBST(NO_ERROR_VARIADIC_MACROS_CFLAGS)
 AX_GCC_OPTION([-Wno-error=variadic-macros],
               [-x c++ ${AM_CXXFLAGS}],[
-#define X(...)
+#define X(...) __VA_ARGS__
 int main()
 {
     return 0;
